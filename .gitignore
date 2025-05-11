@@ -1,0 +1,35 @@
+# Ignore secrets folder
+/environments/_secrets/
+
+# Common OS/system files
+.DS_Store
+Thumbs.db
+
+# Node artifacts (if ever used)
+node_modules/
+
+# Python artifacts (if ever used)
+__pycache__/
+*.py[cod]
+
+# Visual Studio Code settings
+.vscode/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Terraform state files (if applicable)
+*.tfstate
+*.tfstate.*
+
+# IDE metadata
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+*.iml
