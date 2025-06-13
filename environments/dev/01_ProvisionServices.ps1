@@ -3,6 +3,7 @@ Write-Host "Deploying SportDeets Services with Key Vault Access..."
 
 # Import shared service configuration
 . ./_service-config.ps1
+. ./_common-variables.ps1
 
 # Debug: Show all services that will be processed
 Write-Host "`nServices to be processed:"
@@ -16,7 +17,7 @@ $environment = "dev"
 $resourceGroup = "rg-sportDeets-$environment"
 $location = "East US 2"
 $keyVaultName = "sportsdatakv"
-$serverFarmId = "/subscriptions/a11f8d2b-4f9b-4d85-ac2c-3b8e768cd8e0/resourceGroups/rg-sportDeets-$environment/providers/Microsoft.Web/serverfarms/ASP-rgsportDeets$environment-b389"
+$serverFarmId = "/subscriptions/$subscriptionIdPrimary/resourceGroups/rg-sportDeets-$environment/providers/Microsoft.Web/serverfarms/ASP-rgsportDeets$environment-b389"
 
 # Deploy each service
 foreach ($serviceName in $services.Keys) {

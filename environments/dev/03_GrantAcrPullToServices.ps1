@@ -1,35 +1,33 @@
 . "$PSScriptRoot\..\_secrets\_common-variables.ps1"
+. "$PSScriptRoot\_service-config.ps1" # This file contains the $services hashtable
 
-# Corrected Config
+# Required Inputs
 $acrResourceGroup = $script:resourceGroupNameCommon
-$appServiceResourceGroup = $script:resourceGroupNamePrimary
 $acrName = "sportdeets"
 $roleName = "AcrPull"
 
-if (-not $acrName) { throw "acrName is not set." }
+if (-not $acrName)  { throw "acrName is not set." }
 if (-not $roleName) { throw "roleName is not set." }
 
-# Echo for debug
+# Get ACR ID
 Write-Host "Fetching ACR ID for '$acrName' in '$acrResourceGroup'..."
-
-# Get ACR ID (guarded)
 $acrId = az acr show --name $acrName --resource-group $acrResourceGroup --query id --output tsv
 
 if (-not $acrId) {
     throw "Failed to fetch ACR ID. Check if the ACR exists in the correct resource group."
 }
-
 Write-Host "✅ ACR ID: $acrId"
 
-# Get list of App Services
-$appServices = az webapp list --resource-group $appServiceResourceGroup --query "[].{name:name}" --output tsv
-
-foreach ($appName in $appServices) {
+# Iterate through each App Service in the hashtable
+foreach ($appName in $services.Keys) {
     Write-Host "Processing $appName..."
+
+    # You can infer the resource group if needed, or assume they're all in Primary:
+    $resourceGroup = $script:resourceGroupNamePrimary
 
     $principalId = az webapp identity show `
         --name $appName `
-        --resource-group $appServiceResourceGroup `
+        --resource-group $resourceGroup `
         --query principalId `
         --output tsv
 
@@ -45,5 +43,5 @@ foreach ($appName in $appServices) {
         --scope $acrId `
         --only-show-errors | Out-Null
 
-    Write-Host "Granted $roleName to $appName"
+    Write-Host "✅ Granted $roleName to $appName"
 }

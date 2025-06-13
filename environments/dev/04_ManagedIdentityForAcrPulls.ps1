@@ -18,8 +18,6 @@ foreach ($service in $services.GetEnumerator()) {
         --resource-group $resourceGroup `
         --docker-custom-image-name="${acrLoginServer}/${imageName}:${imageTag}" `
         --docker-registry-server-url="https://${acrLoginServer}" `
-        --docker-registry-server-user="" `
-        --docker-registry-server-password="" `
         --only-show-errors | Out-Null
 
     az webapp restart `
