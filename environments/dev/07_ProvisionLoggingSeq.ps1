@@ -1,5 +1,9 @@
+if (-not $env:SPORTDEETS_SECRETS_PATH) {
+    throw "ERROR: The environment variable SPORTDEETS_SECRETS_PATH is not set. Please set it before running this script."
+}
+
 # Load shared variables
-. "$PSScriptRoot\..\_secrets\_common-variables.ps1"
+. "$env:SPORTDEETS_SECRETS_PATH\_common-variables.ps1"
 
 # Required variables
 $resourceGroupName = $script:resourceGroupNamePrimary
