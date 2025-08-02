@@ -1,0 +1,19 @@
+docker run `
+  --hostname "leela" `
+  --env "ACCEPT_EULA=Y" `
+  --env "SEQ_FIRSTRUN_NOAUTHENTICATION=true" `
+  --env "BASE_URI=" `
+  --env "DATA_DIR=/data" `
+  --env "TZ=Etc/UTC" `
+  --network "bridge" `
+  -p 443:443 `
+  -p 45341:45341 `
+  -p 5341:5341 `
+  -p 8090:80 `
+  --restart "no" `
+  --label "Description=Seq" `
+  --label "Vendor=Datalust Pty Ltd" `
+  --label "org.opencontainers.image.ref.name=ubuntu" `
+  --label "org.opencontainers.image.version=22.04" `
+  --runtime "runc" `
+  -d datalust/seq:latest
