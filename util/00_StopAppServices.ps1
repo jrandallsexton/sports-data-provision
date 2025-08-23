@@ -10,7 +10,7 @@ $subscriptionId_AppServices = $script:subscriptionIdPrimary
 $subscriptionId_VM = $script:subscriptionIdTertiary
 $resourceGroup_AppServices = $script:resourceGroupNamePrimary
 $resourceGroup_VM = $script:resourceGroupNameTertiary
-$vmName = $script:pgsqlVmName
+$vmName = $script:pgsqlVmNameDev
 $appServicePlanName = "ASP-rgsportDeetsdev-b389"  # Confirmed default plan name
 
 # Set subscription for App Services

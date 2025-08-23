@@ -16,7 +16,7 @@ $appServicePlanName = "ASP-rgsportDeetsdev-b389"  # Default name assigned by Azu
 # Set subscription and scale App Service Plan
 az account set --subscription $subscriptionId_AppServices
 
-Write-Host "Scaling App Service Plan '$appServicePlanName' to P1mv4..."
+Write-Host "Scaling App Service Plan '$appServicePlanName' to P1mv3..."
 az appservice plan update `
     --name $appServicePlanName `
     --resource-group $resourceGroup_AppServices `

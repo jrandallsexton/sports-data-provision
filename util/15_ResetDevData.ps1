@@ -1,40 +1,37 @@
-# 10_ResetLocalData.ps1
+# 15_ResetDevData.ps1
 <#
 .SYNOPSIS
-    Fully reset local development data for SportDeets.
+    Fully reset DEV environment data for SportDeets.
 
 .DESCRIPTION
-    Drops PostgreSQL tables, MongoDB collections, and optionally Hangfire schemas.
+    Drops PostgreSQL tables and Hangfire schemas in DEV.
+    Clears Service Bus queues and topics in DEV.
+    Cosmos is currently skipped.
 #>
 
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
     throw "ERROR: SPORTDEETS_SECRETS_PATH environment variable is not set."
 }
 
-Write-Host "Starting local data reset..."
+Write-Host "Starting DEV data reset..." -ForegroundColor Cyan
 
 # Load secrets file (PowerShell .ps1 that defines $script:* variables)
 $secretsPath = $env:SPORTDEETS_SECRETS_PATH
 . "$secretsPath\_common-variables.ps1"
 
 # PostgreSQL connection values
-$pgHost = $script:pgHostLocal
-$pgUser = $script:pgUserLocal
-$pgPass = $script:pgPasswordLocal
+$pgHost = $script:pgHostDev
+$pgUser = $script:pgUserDev
+$pgPass = $script:pgPasswordDev
 $pgDatabases = $script:pgDatabases
 
-# Service Bus namespace for debug queues/topics
-$script:sbNamespaceName = "sb-debug-football-ncaa-sportdeets"
-$script:sbResourceGroup = $script:resourceGroupNameSecondary
-$script:sbSubscriptionId = $script:subscriptionIdSecondary
-
-# MongoDB fallback (hardcoded for now)
-$mongoConn = "mongodb://localhost:27017"
-$mongoDb = "Provider-Local"
-$mongoCollection = "FootballNcaa"
+# Service Bus values
+$sbNamespaceName = $script:svcBusNamespaceNameDev
+$sbResourceGroup = $script:resourceGroupNameSecondary
+$sbSubscriptionId = $script:subscriptionIdSecondary
 
 # Confirm prompt
-$confirm = Read-Host "This will delete all local dev data. Type YES to continue"
+$confirm = Read-Host "This will delete all DEV data. Type YES to continue"
 if ($confirm -ne "YES") {
     Write-Host "Cancelled."
     exit
@@ -43,7 +40,6 @@ if ($confirm -ne "YES") {
 # Write SQL to temp file
 function Write-TempSqlFile($sql) {
     $tempPath = [System.IO.Path]::GetTempFileName()
-    # Use a StreamWriter to explicitly disable BOM
     $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
     $writer = New-Object System.IO.StreamWriter($tempPath, $false, $utf8NoBom)
     $writer.Write($sql)
@@ -51,7 +47,6 @@ function Write-TempSqlFile($sql) {
     return $tempPath
 }
 
-# SQL statements
 # SQL statements
 $dropTablesSql = @'
 DO $$
@@ -77,7 +72,6 @@ function Reset-PgDb($label, $dbName) {
     $dropFile = Write-TempSqlFile $dropTablesSql
     $hangfireFile = Write-TempSqlFile $dropHangfireSql
 
-    # Sanity checks
     if (-not $pgHost) { throw "pgHost is null or empty." }
     if (-not $pgUser) { throw "pgUser is null or empty." }
     if (-not $pgPass) { throw "pgPass is null or empty." }
@@ -106,59 +100,43 @@ foreach ($dbName in $pgDatabases) {
     Reset-PgDb -label $dbName -dbName $dbName
 }
 
-# Drop Mongo collection if mongo CLI is installed
-$mongoDbName = "Provider-Local"
-$mongoCollection = "FootballNcaa"
+# Cosmos reset skipped for now
+Write-Host "Skipping Cosmos reset (not yet configured)." -ForegroundColor Yellow
 
-if (Get-Command "mongosh" -ErrorAction SilentlyContinue) {
-    Write-Host "Deleting all documents from MongoDB collection '$mongoCollection' in database '$mongoDbName'..."
-    try {
-        mongosh --quiet --eval `
-            "db.getSiblingDB('$mongoDbName').getCollection('$mongoCollection').deleteMany({})"
-        Write-Host "All documents in '$mongoDbName.$mongoCollection' deleted successfully."
-    }
-    catch {
-        Write-Warning "mongosh execution failed: $_"
-    }
-} else {
-    Write-Warning "'mongosh' CLI not found. Skipping MongoDB document purge."
-}
+Write-Host "Cleaning Azure Service Bus namespace: $sbNamespaceName ..." -ForegroundColor Cyan
 
-Write-Host "Cleaning Azure Service Bus namespace: $script:sbNamespaceName ..." -ForegroundColor Cyan
-
-# Set subscription
-az account set --subscription $script:sbSubscriptionId | Out-Null
+az account set --subscription $sbSubscriptionId | Out-Null
 
 # Delete all queues
 $queues = az servicebus queue list `
-    --resource-group $script:sbResourceGroup `
-    --namespace-name $script:sbNamespaceName `
+    --resource-group $sbResourceGroup `
+    --namespace-name $sbNamespaceName `
     --query "[].name" -o tsv
 
 if ($queues) {
     foreach ($q in $queues) {
         Write-Host "  Deleting queue: $q"
         az servicebus queue delete `
-            --resource-group $script:sbResourceGroup `
-            --namespace-name $script:sbNamespaceName `
+            --resource-group $sbResourceGroup `
+            --namespace-name $sbNamespaceName `
             --name $q --only-show-errors
     }
 } else {
     Write-Host "  No queues found."
 }
 
-# Delete all topics (subscriptions are deleted with the topic)
+# Delete all topics (deletes associated subscriptions)
 $topics = az servicebus topic list `
-    --resource-group $script:sbResourceGroup `
-    --namespace-name $script:sbNamespaceName `
+    --resource-group $sbResourceGroup `
+    --namespace-name $sbNamespaceName `
     --query "[].name" -o tsv
 
 if ($topics) {
     foreach ($t in $topics) {
         Write-Host "  Deleting topic: $t"
         az servicebus topic delete `
-            --resource-group $script:sbResourceGroup `
-            --namespace-name $script:sbNamespaceName `
+            --resource-group $sbResourceGroup `
+            --namespace-name $sbNamespaceName `
             --name $t --only-show-errors
     }
 } else {
@@ -166,6 +144,4 @@ if ($topics) {
 }
 
 Write-Host "Service Bus cleanup complete." -ForegroundColor Green
-
-
-Write-Host "Local reset complete."
+Write-Host "DEV reset complete." -ForegroundColor Green

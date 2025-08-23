@@ -59,9 +59,25 @@ DECLARE
     stmt TEXT;
 BEGIN
     FOR stmt IN
-        SELECT 'DROP TABLE IF EXISTS "' || tablename || '" CASCADE;'
+        SELECT 'TRUNCATE TABLE "' || tablename || '" CASCADE;'
         FROM pg_tables
         WHERE schemaname = 'public'
+          AND tablename NOT IN (
+              'Athlete',
+              'AthleteExternalId',
+              'AthleteImage',
+              'AthletePosition',
+              'AthletePositionExternalId',
+              'AthleteStatus',
+              'Location',
+              'Venue',
+              'VenueExternalId',
+              'VenueImage',
+              'lkLeaderCategory',
+              'lkPlayType',
+              'lkRecordAtsCategory',
+              '__EFMigrationsHistory'
+          )
     LOOP
         EXECUTE stmt;
     END LOOP;

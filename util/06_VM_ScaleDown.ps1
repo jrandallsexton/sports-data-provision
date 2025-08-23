@@ -1,3 +1,4 @@
+# 06_VM_ScaleDown.ps1
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
     throw "ERROR: The environment variable SPORTDEETS_SECRETS_PATH is not set. Please set it before running this script."
 }
@@ -7,7 +8,7 @@ if (-not $env:SPORTDEETS_SECRETS_PATH) {
 
 $subscriptionId_VM = $script:subscriptionIdTertiary
 $resourceGroup_VM = $script:resourceGroupNameTertiary
-$vmName = $script:pgsqlVmName
+$vmName = $script:pgsqlVmNameDev
 $desiredSize = "Standard_B1s"
 
 # Set active subscription
