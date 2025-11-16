@@ -1,6 +1,10 @@
 # Ignore secrets folder
 /environments/_secrets/
 
+# Service Principal credentials
+service-principal-credentials.json
+deployment-outputs.json
+
 # Common OS/system files
 .DS_Store
 Thumbs.db
@@ -33,3 +37,4 @@ __pycache__/
 *.sln.docstates
 .idea/
 *.iml
+.vagrant/ 

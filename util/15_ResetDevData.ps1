@@ -1,4 +1,3 @@
-# 15_ResetDevData.ps1
 <#
 .SYNOPSIS
     Fully reset DEV environment data for SportDeets.
@@ -6,7 +5,7 @@
 .DESCRIPTION
     Drops PostgreSQL tables and Hangfire schemas in DEV.
     Clears Service Bus queues and topics in DEV.
-    Cosmos is currently skipped.
+    Deletes the single Cosmos DB container used in DEV.
 #>
 
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
@@ -23,7 +22,14 @@ $secretsPath = $env:SPORTDEETS_SECRETS_PATH
 $pgHost = $script:pgHostDev
 $pgUser = $script:pgUserDev
 $pgPass = $script:pgPasswordDev
-$pgDatabases = $script:pgDatabases
+$pgDatabases = $script:pgDatabasesDev
+
+# Cosmos DB values
+$cosmosAccount = $script:environments["dev"]["cosmosAccount"]
+$cosmosDatabase = $script:environments["dev"]["cosmosDatabase"]
+$cosmosContainer = $script:environments["dev"]["cosmosContainer"]
+$cosmosSubscription = $script:subscriptionIdSecondary
+$comsmoResourceGroup = $script:resourceGroupNameSecondary = "rg-sportDeets-dev2"
 
 # Service Bus values
 $sbNamespaceName = $script:svcBusNamespaceNameDev
@@ -100,9 +106,40 @@ foreach ($dbName in $pgDatabases) {
     Reset-PgDb -label $dbName -dbName $dbName
 }
 
-# Cosmos reset skipped for now
-Write-Host "Skipping Cosmos reset (not yet configured)." -ForegroundColor Yellow
+# === Reset Cosmos DB ===
+Write-Host "Resetting Cosmos DB..." -ForegroundColor Cyan
+az account set --subscription $cosmosSubscription
 
+if (-not $cosmosAccount -or -not $cosmosDatabase -or -not $cosmosContainer) {
+    throw "Cosmos DEV configuration is incomplete. Check _common-variables.ps1."
+}
+
+Write-Host "  Deleting container '$cosmosContainer' from database '$cosmosDatabase'..."
+
+az cosmosdb sql container delete `
+    --resource-group $comsmoResourceGroup `
+    --account-name $cosmosAccount `
+    --database-name $cosmosDatabase `
+    --name $cosmosContainer `
+    --yes `
+    --only-show-errors
+
+Write-Host "Re-creating container '$cosmosContainer' in database '$cosmosDatabase'..."
+
+az cosmosdb sql container create `
+    --resource-group $comsmoResourceGroup `
+    --account-name $cosmosAccount `
+    --database-name $cosmosDatabase `
+    --name $cosmosContainer `
+    --partition-key-path "/RoutingKey" `
+    --throughput 400 `
+    --only-show-errors | Out-Null
+
+Write-Host "Cosmos container recreated." -ForegroundColor Green
+
+Write-Host "Cosmos DB reset complete." -ForegroundColor Green
+
+# === Reset Azure Service Bus ===
 Write-Host "Cleaning Azure Service Bus namespace: $sbNamespaceName ..." -ForegroundColor Cyan
 
 az account set --subscription $sbSubscriptionId | Out-Null
@@ -121,7 +158,8 @@ if ($queues) {
             --namespace-name $sbNamespaceName `
             --name $q --only-show-errors
     }
-} else {
+}
+else {
     Write-Host "  No queues found."
 }
 
@@ -139,7 +177,8 @@ if ($topics) {
             --namespace-name $sbNamespaceName `
             --name $t --only-show-errors
     }
-} else {
+}
+else {
     Write-Host "  No topics found."
 }
 

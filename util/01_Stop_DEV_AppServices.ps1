@@ -1,0 +1,51 @@
+# Stop_DEV_AppServices.ps1
+if (-not $env:SPORTDEETS_SECRETS_PATH) {
+    throw "ERROR: The environment variable SPORTDEETS_SECRETS_PATH is not set. Please set it before running this script."
+}
+
+# Load shared variables
+. "$env:SPORTDEETS_SECRETS_PATH\_common-variables.ps1"
+
+# Config
+$subscriptionId_AppServices = $script:subscriptionIdPrimary
+$subscriptionId_VM = $script:subscriptionIdTertiary
+$resourceGroup_AppServices = $script:resourceGroupNamePrimary
+$resourceGroup_VM = $script:resourceGroupNameTertiary
+$vmName = $script:pgsqlVmNameDev
+$appServicePlanName = "ASP-rgsportDeetsdev-b389"  # Confirmed default plan name
+
+# Set subscription for App Services
+az account set --subscription $subscriptionId_AppServices
+
+# Scale down App Service Plan to B1 (lowest tier with custom domains)
+Write-Host "Scaling App Service Plan '$appServicePlanName' to B1..."
+az appservice plan update `
+    --name $appServicePlanName `
+    --resource-group $resourceGroup_AppServices `
+    --sku B1 `
+    --only-show-errors
+
+# Get all App Service names in the resource group
+$appServices = az webapp list `
+  --resource-group $resourceGroup_AppServices `
+  --query "[].name" `
+  --output tsv
+
+# Disable Always On and stop each App Service
+foreach ($appName in $appServices) {
+    Write-Host "Disabling Always On for $appName..."
+    az webapp config set `
+        --name $appName `
+        --resource-group $resourceGroup_AppServices `
+        --always-on false `
+        --only-show-errors
+
+    Write-Host "Stopping $appName..."
+    az webapp stop `
+        --name $appName `
+        --resource-group $resourceGroup_AppServices `
+        --only-show-errors
+}
+Write-Host "All App Services stopped in $resourceGroup_AppServices."
+
+Write-Host "`n✅ All shutdown operations complete. App Service Plan scaled to B1, Always On disabled and apps stopped."

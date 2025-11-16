@@ -1,0 +1,23 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu2204"
+  config.vm.communicator = "ssh"
+  config.vm.hostname = "sdDbProd"
+
+  config.vm.provider "hyperv" do |hv|
+    hv.memory = 4096
+    hv.maxmemory = 8192
+    hv.cpus = 2
+    hv.vm_integration_services = {
+      guest_service_interface: true
+    }
+    hv.linked_clone = true
+    hv.enable_virtualization_extensions = true
+    hv.vmname = "pgsql-prod"
+  end
+
+  config.vm.network "public_network", bridge: "sd-ext-vswitch"
+
+  config.vm.synced_folder ".", "/vagrant", type: "smb", create: true
+
+  config.vm.provision "shell", path: "provision-pgsql.sh"
+end

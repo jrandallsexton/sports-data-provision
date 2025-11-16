@@ -4,11 +4,15 @@
 # - pg_restore drops/recreates objects in-place
 # =========================
 
+# === Load secrets ===
+$secretsPath = $env:SPORTDEETS_SECRETS_PATH
+. "$secretsPath\_common-variables.ps1"
+
 # -------- CONFIG --------
 $backupFolder = "C:\Backups\FromDev"   # folder with *.dump (and optional roles.sql)
-$pgUser       = "postgres"
-$pgPassword   = "sesame1?"
-$pgHost       = "127.0.0.1"
+$pgUser       = $script:pgUserLocal
+$pgPassword   = $script:pgPasswordLocal
+$pgHost       = $script:pgHostLocal
 $pgPort       = 5432
 
 # Postgres binaries

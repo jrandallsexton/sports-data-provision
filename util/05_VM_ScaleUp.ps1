@@ -7,7 +7,7 @@ if (-not $env:SPORTDEETS_SECRETS_PATH) {
 
 $subscriptionId_VM = $script:subscriptionIdTertiary
 $resourceGroup_VM = $script:resourceGroupNameTertiary
-$vmName = $script:pgsqlVmName
+$vmName = $script:pgsqlVmNameDev
 $desiredSize = "Standard_B2s"
 
 # Set active subscription

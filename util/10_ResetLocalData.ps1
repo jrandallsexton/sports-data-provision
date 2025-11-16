@@ -21,10 +21,10 @@ $secretsPath = $env:SPORTDEETS_SECRETS_PATH
 $pgHost = $script:pgHostLocal
 $pgUser = $script:pgUserLocal
 $pgPass = $script:pgPasswordLocal
-$pgDatabases = $script:pgDatabases
+$pgDatabases = $script:pgDatabasesLocal
 
-# Service Bus namespace for debug queues/topics
-$script:sbNamespaceName = "sb-debug-football-ncaa-sportdeets"
+# Service Bus namespace
+$script:sbNamespaceName = "sb-local-football-ncaa-sportdeets"
 $script:sbResourceGroup = $script:resourceGroupNameSecondary
 $script:sbSubscriptionId = $script:subscriptionIdSecondary
 
@@ -34,7 +34,7 @@ $mongoDb = "Provider-Local"
 $mongoCollection = "FootballNcaa"
 
 # Confirm prompt
-$confirm = Read-Host "This will delete all local dev data. Type YES to continue"
+$confirm = Read-Host "This will delete all LOCAL data. Type YES to continue"
 if ($confirm -ne "YES") {
     Write-Host "Cancelled."
     exit

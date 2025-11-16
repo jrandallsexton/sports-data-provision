@@ -1,7 +1,13 @@
+# === Load secrets ===
+$secretsPath = $env:SPORTDEETS_SECRETS_PATH
+. "$secretsPath\_common-variables.ps1"
+
 # === Configuration ===
 $pgBinPath = "C:\Program Files\PostgreSQL\17\bin"  # Adjust version/path as needed
 $backupRoot = "C:\Backups\Postgres"
-$pgUser = "postgres"
+$pgUser = $script:pgUserLocal
+# === Set PostgreSQL password env variable ===
+$env:PGPASSWORD = $script:pgPasswordLocal
 
 # === Prep backup folder ===
 $timestamp = Get-Date -Format "yyyyMMdd-HHmm"
