@@ -8,7 +8,7 @@ param publisherEmail string = 'admin@sportdeets.com'
 param publisherName string = 'SportDeets'
 param backendApiUrl string = 'https://api-int.sportdeets.com'
 
-resource apim 'Microsoft.ApiManagement/service@2023-05-01-preview' = {
+resource apim 'Microsoft.ApiManagement/service@2024-06-01-preview' = {
   name: apimName
   location: location
   sku: {
@@ -22,7 +22,7 @@ resource apim 'Microsoft.ApiManagement/service@2023-05-01-preview' = {
 }
 
 // Backend configuration for internal API
-resource backend 'Microsoft.ApiManagement/service/backends@2023-05-01-preview' = {
+resource backend 'Microsoft.ApiManagement/service/backends@2024-06-01-preview' = {
   parent: apim
   name: 'sportdeets-internal-api'
   properties: {
@@ -36,8 +36,8 @@ resource backend 'Microsoft.ApiManagement/service/backends@2023-05-01-preview' =
   }
 }
 
-// API definition
-resource api 'Microsoft.ApiManagement/service/apis@2023-05-01-preview' = {
+// API definition - Import from OpenAPI/Swagger
+resource api 'Microsoft.ApiManagement/service/apis@2024-06-01-preview' = {
   parent: apim
   name: 'sportdeets-api'
   properties: {
@@ -47,37 +47,40 @@ resource api 'Microsoft.ApiManagement/service/apis@2023-05-01-preview' = {
     protocols: [
       'https'
     ]
-    subscriptionRequired: true
+    subscriptionRequired: false
     serviceUrl: backendApiUrl
     type: 'http'
+    format: 'openapi+json-link'
+    value: '${backendApiUrl}/swagger/v1/swagger.json'
   }
 }
 
-// Sample operation: GET /swagger/index.html
-resource swaggerOperation 'Microsoft.ApiManagement/service/apis/operations@2023-05-01-preview' = {
+// SignalR negotiate endpoint
+resource signalrNegotiateOperation 'Microsoft.ApiManagement/service/apis/operations@2024-06-01-preview' = {
   parent: api
-  name: 'get-swagger'
+  name: 'signalr-negotiate'
   properties: {
-    displayName: 'Get Swagger UI'
-    method: 'GET'
-    urlTemplate: '/swagger/index.html'
-    description: 'Swagger UI endpoint to verify APIM routing'
-    responses: [
-      {
-        statusCode: 200
-        description: 'Success'
-        representations: [
-          {
-            contentType: 'text/html'
-          }
-        ]
-      }
-    ]
+    displayName: 'SignalR Negotiate'
+    method: 'POST'
+    urlTemplate: '/hubs/notifications/negotiate'
+    description: 'SignalR connection negotiation endpoint'
+  }
+}
+
+// SignalR hub endpoint - catch all methods
+resource signalrHubOperation 'Microsoft.ApiManagement/service/apis/operations@2024-06-01-preview' = {
+  parent: api
+  name: 'signalr-hub'
+  properties: {
+    displayName: 'SignalR Hub Communication'
+    method: '*'
+    urlTemplate: '/hubs/notifications'
+    description: 'SignalR hub communication endpoint'
   }
 }
 
 // API policy: Set backend, CORS, rate limiting
-resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2023-05-01-preview' = {
+resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2024-06-01-preview' = {
   parent: api
   name: 'policy'
   properties: {
@@ -123,7 +126,7 @@ resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2023-05-01-pre
 }
 
 // Product: Unlimited (for production use)
-resource unlimitedProduct 'Microsoft.ApiManagement/service/products@2023-05-01-preview' = {
+resource unlimitedProduct 'Microsoft.ApiManagement/service/products@2024-06-01-preview' = {
   parent: apim
   name: 'unlimited'
   properties: {
@@ -136,13 +139,13 @@ resource unlimitedProduct 'Microsoft.ApiManagement/service/products@2023-05-01-p
 }
 
 // Link API to product
-resource productApi 'Microsoft.ApiManagement/service/products/apis@2023-05-01-preview' = {
+resource productApi 'Microsoft.ApiManagement/service/products/apis@2024-06-01-preview' = {
   parent: unlimitedProduct
   name: api.name
 }
 
 // Subscription for production UI
-resource uiSubscription 'Microsoft.ApiManagement/service/subscriptions@2023-05-01-preview' = {
+resource uiSubscription 'Microsoft.ApiManagement/service/subscriptions@2024-06-01-preview' = {
   parent: apim
   name: 'sportdeets-ui-subscription'
   properties: {
@@ -155,6 +158,7 @@ resource uiSubscription 'Microsoft.ApiManagement/service/subscriptions@2023-05-0
 output apimHostname string = apim.properties.gatewayUrl
 output apimResourceId string = apim.id
 output apimName string = apim.name
+#disable-next-line outputs-should-not-contain-secrets
 output subscriptionKey string = uiSubscription.listSecrets().primaryKey
 output subscriptionId string = uiSubscription.id
 output backendUrl string = backend.properties.url
