@@ -1,24 +1,14 @@
 // Azure API Management - Consumption Tier
-// Provisions APIM to sit behind Azure Front Door
+// Updates existing APIM configuration
 // APIM proxies requests to internal K3s API (api-int.sportdeets.com)
+// NOTE: Deploy this to rg-sportDeets resource group
 
-param location string = 'eastus2'
 param apimName string = 'sportdeets-apim'
-param publisherEmail string = 'admin@sportdeets.com'
-param publisherName string = 'SportDeets'
 param backendApiUrl string = 'https://api-int.sportdeets.com'
 
-resource apim 'Microsoft.ApiManagement/service@2024-06-01-preview' = {
+// Reference existing APIM service
+resource apim 'Microsoft.ApiManagement/service@2024-06-01-preview' existing = {
   name: apimName
-  location: location
-  sku: {
-    name: 'Consumption'
-    capacity: 0
-  }
-  properties: {
-    publisherEmail: publisherEmail
-    publisherName: publisherName
-  }
 }
 
 // Backend configuration for internal API
@@ -55,30 +45,6 @@ resource api 'Microsoft.ApiManagement/service/apis@2024-06-01-preview' = {
   }
 }
 
-// SignalR negotiate endpoint
-resource signalrNegotiateOperation 'Microsoft.ApiManagement/service/apis/operations@2024-06-01-preview' = {
-  parent: api
-  name: 'signalr-negotiate'
-  properties: {
-    displayName: 'SignalR Negotiate'
-    method: 'POST'
-    urlTemplate: '/hubs/notifications/negotiate'
-    description: 'SignalR connection negotiation endpoint'
-  }
-}
-
-// SignalR hub endpoint - catch all methods
-resource signalrHubOperation 'Microsoft.ApiManagement/service/apis/operations@2024-06-01-preview' = {
-  parent: api
-  name: 'signalr-hub'
-  properties: {
-    displayName: 'SignalR Hub Communication'
-    method: '*'
-    urlTemplate: '/hubs/notifications'
-    description: 'SignalR hub communication endpoint'
-  }
-}
-
 // API policy: Set backend, CORS, rate limiting
 resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2024-06-01-preview' = {
   parent: api
@@ -108,13 +74,17 @@ resource apiPolicy 'Microsoft.ApiManagement/service/apis/policies@2024-06-01-pre
               <header>*</header>
             </expose-headers>
           </cors>
-          <rate-limit calls="1000" renewal-period="60" />
+          <!-- Global rate limit: 5000 calls per minute (Consumption SKU only supports basic rate-limit) -->
+          <rate-limit calls="5000" renewal-period="60" />
         </inbound>
         <backend>
           <base />
         </backend>
         <outbound>
           <base />
+          <set-header name="X-RateLimit-Limit" exists-action="override">
+            <value>5000</value>
+          </set-header>
         </outbound>
         <on-error>
           <base />
