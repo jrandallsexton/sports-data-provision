@@ -27,11 +27,11 @@ az account set --subscription $sourceSubscription | Out-Null
 $sourceContainers = az storage container list `
     --account-name $sourceAccount `
     --auth-mode key `
-    --query "[?starts_with(name, 'dev-provider-')].name" `
+    --query "[].name" `
     --output json | ConvertFrom-Json
 
 if ($sourceContainers.Count -eq 0) {
-    Write-Host "No containers found matching pattern 'dev-provider-*'" -ForegroundColor Red
+    Write-Host "No containers found in source storage account" -ForegroundColor Red
     exit 1
 }
 
@@ -62,6 +62,7 @@ $successCount = 0
 $errorCount = 0
 
 foreach ($container in $sourceContainers) {
+    # Replace dev- prefix with prod- for target
     $targetContainer = $container -replace '^dev-', 'prod-'
     
     Write-Host ""

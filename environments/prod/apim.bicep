@@ -108,6 +108,18 @@ resource unlimitedProduct 'Microsoft.ApiManagement/service/products@2024-06-01-p
   }
 }
 
+// SignalR negotiate operation (not in Swagger)
+resource signalrNegotiateOperation 'Microsoft.ApiManagement/service/apis/operations@2024-06-01-preview' = {
+  parent: api
+  name: 'signalr-negotiate'
+  properties: {
+    displayName: 'SignalR Negotiate'
+    method: 'POST'
+    urlTemplate: '/hubs/notifications/negotiate'
+    description: 'SignalR connection negotiation endpoint'
+  }
+}
+
 // Link API to product
 resource productApi 'Microsoft.ApiManagement/service/products/apis@2024-06-01-preview' = {
   parent: unlimitedProduct
