@@ -9,7 +9,7 @@ $secretsPath = $env:SPORTDEETS_SECRETS_PATH
 . "$secretsPath\_common-variables.ps1"
 
 # -------- CONFIG --------
-$backupFolder = "C:\Backups\FromDev"   # folder with *.dump (and optional roles.sql)
+$backupFolder = "C:\Backups\FromProd"   # folder with *.dump (and optional roles.sql)
 $pgUser       = $script:pgUserLocal
 $pgPassword   = $script:pgPasswordLocal
 $pgHost       = $script:pgHostLocal
