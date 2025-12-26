@@ -6,6 +6,10 @@
 .DESCRIPTION
     Drops PostgreSQL tables, MongoDB collections, and optionally Hangfire schemas.
 #>
+[CmdletBinding()]
+param(
+    [switch]$Force
+)
 
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
     throw "ERROR: SPORTDEETS_SECRETS_PATH environment variable is not set."
@@ -24,7 +28,7 @@ $pgPass = $script:pgPasswordLocal
 $pgDatabases = $script:pgDatabasesLocal
 
 # Service Bus namespace
-$script:sbNamespaceName = "sb-local-football-ncaa-sportdeets"
+# Ensure $script:svcBusNamespaceNameLocal is set in _common-variables.ps1
 $script:sbResourceGroup = $script:resourceGroupNameSecondary
 $script:sbSubscriptionId = $script:subscriptionIdSecondary
 
@@ -34,10 +38,12 @@ $mongoDb = "Provider-Local"
 $mongoCollection = "FootballNcaa"
 
 # Confirm prompt
-$confirm = Read-Host "This will delete all LOCAL data. Type YES to continue"
-if ($confirm -ne "YES") {
-    Write-Host "Cancelled."
-    exit
+if (-not $Force) {
+    $confirm = Read-Host "This will delete all LOCAL data. Type YES to continue"
+    if ($confirm -ne "YES") {
+        Write-Host "Cancelled."
+        exit
+    }
 }
 
 # Write SQL to temp file
@@ -92,8 +98,15 @@ function Reset-PgDb($label, $dbName) {
 
     Write-Host "  Running psql drop: $($argsDrop -join ' ')"
     & psql @argsDrop
+    if ($LASTEXITCODE -ne 0) {
+        throw "psql drop failed with exit code $LASTEXITCODE"
+    }
+
     Write-Host "  Running psql hangfire: $($argsHangfire -join ' ')"
     & psql @argsHangfire
+    if ($LASTEXITCODE -ne 0) {
+        throw "psql hangfire failed with exit code $LASTEXITCODE"
+    }
 
     Remove-Item $dropFile, $hangfireFile
 }
@@ -124,7 +137,7 @@ if (Get-Command "mongosh" -ErrorAction SilentlyContinue) {
     Write-Warning "'mongosh' CLI not found. Skipping MongoDB document purge."
 }
 
-Write-Host "Cleaning Azure Service Bus namespace: $script:sbNamespaceName ..." -ForegroundColor Cyan
+Write-Host "Cleaning Azure Service Bus namespace: $script:svcBusNamespaceNameLocal ..." -ForegroundColor Cyan
 
 # Set subscription
 az account set --subscription $script:sbSubscriptionId | Out-Null
@@ -132,7 +145,7 @@ az account set --subscription $script:sbSubscriptionId | Out-Null
 # Delete all queues
 $queues = az servicebus queue list `
     --resource-group $script:sbResourceGroup `
-    --namespace-name $script:sbNamespaceName `
+    --namespace-name $script:svcBusNamespaceNameLocal `
     --query "[].name" -o tsv
 
 if ($queues) {
@@ -140,7 +153,7 @@ if ($queues) {
         Write-Host "  Deleting queue: $q"
         az servicebus queue delete `
             --resource-group $script:sbResourceGroup `
-            --namespace-name $script:sbNamespaceName `
+            --namespace-name $script:svcBusNamespaceNameLocal `
             --name $q --only-show-errors
     }
 } else {
@@ -150,7 +163,7 @@ if ($queues) {
 # Delete all topics (subscriptions are deleted with the topic)
 $topics = az servicebus topic list `
     --resource-group $script:sbResourceGroup `
-    --namespace-name $script:sbNamespaceName `
+    --namespace-name $script:svcBusNamespaceNameLocal `
     --query "[].name" -o tsv
 
 if ($topics) {
@@ -158,7 +171,7 @@ if ($topics) {
         Write-Host "  Deleting topic: $t"
         az servicebus topic delete `
             --resource-group $script:sbResourceGroup `
-            --namespace-name $script:sbNamespaceName `
+            --namespace-name $script:svcBusNamespaceNameLocal `
             --name $t --only-show-errors
     }
 } else {

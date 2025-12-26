@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  azurite:
+    build: .
+    container_name: azurite-local
+    ports:
+      - "10000:10000"  # Blob service
+      - "10001:10001"  # Queue service
+      - "10002:10002"  # Table service
+    volumes:
+      - azurite-data:/data
+    restart: unless-stopped
+
+volumes:
+  azurite-data:

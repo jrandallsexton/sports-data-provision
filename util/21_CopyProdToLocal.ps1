@@ -16,6 +16,10 @@
     This script will DESTROY all local data and replace it with production data.
     Use with caution.
 #>
+[CmdletBinding()]
+param(
+    [switch]$Force
+)
 
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
     throw "ERROR: SPORTDEETS_SECRETS_PATH environment variable is not set."
@@ -29,14 +33,16 @@ Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host "COPY PRODUCTION TO LOCAL E2E" -ForegroundColor Cyan
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "⚠️  WARNING: This will DESTROY all local data!" -ForegroundColor Red
+Write-Host "WARNING: This will DESTROY all local data!" -ForegroundColor Red
 Write-Host ""
 
 # Final confirmation
-$confirm = Read-Host "Type 'YES' to continue with production data copy"
-if ($confirm -ne "YES") {
-    Write-Host "Cancelled." -ForegroundColor Yellow
-    exit 0
+if (-not $Force) {
+    $confirm = Read-Host "Type 'YES' to continue with production data copy"
+    if ($confirm -ne "YES") {
+        Write-Host "Cancelled." -ForegroundColor Yellow
+        exit 0
+    }
 }
 
 Write-Host ""
@@ -60,7 +66,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host ""
-Write-Host "✅ Production backup completed" -ForegroundColor Green
+Write-Host "Production backup completed" -ForegroundColor Green
 Write-Host ""
 
 # =========================
@@ -75,16 +81,16 @@ if (-not (Test-Path $resetScript)) {
     throw "ERROR: Reset script not found: $resetScript"
 }
 
-# Auto-confirm by piping 'YES' to the script
+# Auto-confirm by using -Force switch
 Write-Host "  Automatically confirming local data reset..." -ForegroundColor Gray
-"YES" | & $resetScript
+& $resetScript -Force
 
 if ($LASTEXITCODE -ne 0) {
     throw "ERROR: Local data reset failed with exit code $LASTEXITCODE"
 }
 
 Write-Host ""
-Write-Host "✅ Local data reset completed" -ForegroundColor Green
+Write-Host "Local data reset completed" -ForegroundColor Green
 Write-Host ""
 
 # =========================
@@ -115,7 +121,7 @@ if ($LASTEXITCODE -ne 0) {
 Remove-Item $tempRestoreScript -Force
 
 Write-Host ""
-Write-Host "✅ Restore completed" -ForegroundColor Green
+Write-Host "Restore completed" -ForegroundColor Green
 Write-Host ""
 
 # =========================
@@ -125,7 +131,7 @@ Write-Host ""
 $duration = (Get-Date) - $startTime
 
 Write-Host "=====================================" -ForegroundColor Cyan
-Write-Host "E2E COPY COMPLETE! 🎉" -ForegroundColor Cyan
+Write-Host "E2E COPY COMPLETE!" -ForegroundColor Cyan
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Total Duration: $($duration.ToString())" -ForegroundColor White

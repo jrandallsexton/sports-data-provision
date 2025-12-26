@@ -1,5 +1,7 @@
 #!/usr/bin/env pwsh
 # Port forward to Swagger UIs on all services (Provider, Producer, API)
+kubectl config use-context nuc | Out-Null
+Write-Host "Using cluster context: nuc (NUC cluster)" -ForegroundColor Yellow
 
 Write-Host "Finding pods..." -ForegroundColor Cyan
 

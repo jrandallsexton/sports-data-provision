@@ -1,6 +1,6 @@
 $registryName = 'sportDeets'
 $doNotDeleteTags = ''
-$skipLastTags = 2
+$skipLastTags = 5
 
 $repoArray = (az acr repository list --name $registryName --output json | ConvertFrom-Json)
 

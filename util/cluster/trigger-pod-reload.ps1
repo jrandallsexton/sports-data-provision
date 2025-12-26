@@ -11,7 +11,7 @@ $patchFile = [System.IO.Path]::GetTempFileName()
 {"data":{"last-reload":"$timestamp"}}
 "@ | Out-File -FilePath $patchFile -Encoding ASCII -NoNewline
 
-kubectl patch configmap reload-trigger -n default --type merge --patch-file $patchFile
+kubectl patch configmap reload-trigger -n default --type merge --patch-file $patchFile --context=nuc
 
 Remove-Item $patchFile
 
@@ -22,7 +22,7 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host ""
     
     # Watch pods restart
-    kubectl get pods -n default -w
+    kubectl get pods -n default -w --context=nuc
 } else {
     Write-Host "Failed to trigger reload" -ForegroundColor Red
     exit 1

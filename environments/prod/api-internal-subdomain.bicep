@@ -68,7 +68,7 @@ resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2024-02-01' = {
     ]
     forwardingProtocol: 'HttpOnly'
     linkToDefaultDomain: 'Disabled'  // Don't link to default domain to avoid conflict
-    httpsRedirect: 'Disabled'  // Allow HTTP for local development and APIM backend access
+    httpsRedirect: 'Enabled'  // APIM requires HTTPS; Front Door terminates TLS and forwards HTTP to k3s
   }
 }
 

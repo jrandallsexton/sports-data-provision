@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  servicebus:
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    container_name: servicebus-emulator
+    ports:
+      - "5672:5672"   # AMQP
+    environment:
+      ACCEPT_EULA: "Y"
+      SERVICEBUS_EMULATOR_LOGGING__LOGLEVEL: "Information"
+    volumes:
+      - servicebus-data:/data
+    restart: unless-stopped
+
+volumes:
+  servicebus-data:
