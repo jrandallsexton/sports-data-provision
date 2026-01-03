@@ -41,7 +41,7 @@ if (-not (Test-Path $backupFolder)) {
 }
 
 Write-Host "[INFO] Backup destination: $backupFolder" -ForegroundColor White
-Write-Host "[INFO] Source: $($pgUser)@$($pgHost):$($pgPort) (production VM)" -ForegroundColor White
+Write-Host "[INFO] Source: $($pgUser)@$($pgHost):$($pgPort) (production NUC)" -ForegroundColor White
 Write-Host ""
 
 # Pre-flight checks
