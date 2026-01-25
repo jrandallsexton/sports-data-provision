@@ -11,4 +11,5 @@ EXPOSE 10000 10001 10002
 RUN mkdir -p /data
 
 # Start Azurite with persistence
-CMD ["azurite", "--blobHost", "0.0.0.0", "--queueHost", "0.0.0.0", "--tableHost", "0.0.0.0", "--location", "/data", "--debug", "/data/debug.log"]
+# --skipApiVersionCheck: Allow newer Azure SDK API versions that Azurite may not officially support yet
+CMD ["azurite", "--blobHost", "0.0.0.0", "--queueHost", "0.0.0.0", "--tableHost", "0.0.0.0", "--location", "/data", "--debug", "/data/debug.log", "--skipApiVersionCheck"]
