@@ -27,10 +27,12 @@ $pgUser = $script:pgUserLocal
 $pgPass = $script:pgPasswordLocal
 $pgDatabases = $script:pgDatabasesLocal
 
-# Service Bus namespace
-# Ensure $script:svcBusNamespaceNameLocal is set in _common-variables.ps1
-$script:sbResourceGroup = $script:resourceGroupNameSecondary
-$script:sbSubscriptionId = $script:subscriptionIdSecondary
+# RabbitMQ connection values
+$rabbitHost = "localhost"
+$rabbitPort = "15672"
+$rabbitUser = $script:rmqUsernameLocal
+$rabbitPass = $script:rmqPasswordLocal
+$rabbitVhost = "%2F" # URL-encoded "/"
 
 # MongoDB fallback (hardcoded for now)
 $mongoConn = "mongodb://localhost:27017"
@@ -137,48 +139,43 @@ if (Get-Command "mongosh" -ErrorAction SilentlyContinue) {
     Write-Warning "'mongosh' CLI not found. Skipping MongoDB document purge."
 }
 
-Write-Host "Cleaning Azure Service Bus namespace: $script:svcBusNamespaceNameLocal ..." -ForegroundColor Cyan
+Write-Host "Cleaning RabbitMQ queues..." -ForegroundColor Cyan
 
-# Set subscription
-az account set --subscription $script:sbSubscriptionId | Out-Null
-
-# Delete all queues
-$queues = az servicebus queue list `
-    --resource-group $script:sbResourceGroup `
-    --namespace-name $script:svcBusNamespaceNameLocal `
-    --query "[].name" -o tsv
-
-if ($queues) {
-    foreach ($q in $queues) {
-        Write-Host "  Deleting queue: $q"
-        az servicebus queue delete `
-            --resource-group $script:sbResourceGroup `
-            --namespace-name $script:svcBusNamespaceNameLocal `
-            --name $q --only-show-errors
+# Get all queues using RabbitMQ Management HTTP API
+try {
+    $rabbitApiUrl = "http://${rabbitHost}:${rabbitPort}/api/queues/${rabbitVhost}"
+    $cred = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("${rabbitUser}:${rabbitPass}"))
+    $headers = @{ Authorization = "Basic $cred" }
+    
+    $queues = Invoke-RestMethod -Uri $rabbitApiUrl -Headers $headers -Method Get
+    
+    if ($queues.Count -gt 0) {
+        Write-Host "  Found $($queues.Count) queue(s) to purge"
+        foreach ($queue in $queues) {
+            $queueName = $queue.name
+            Write-Host "  Purging queue: $queueName"
+            
+            # Purge (delete all messages) from the queue
+            $purgeUrl = "http://${rabbitHost}:${rabbitPort}/api/queues/${rabbitVhost}/${queueName}/contents"
+            try {
+                Invoke-RestMethod -Uri $purgeUrl -Headers $headers -Method Delete | Out-Null
+                Write-Host "    ✓ Purged successfully" -ForegroundColor Green
+            }
+            catch {
+                Write-Warning "    Failed to purge queue '$queueName': $_"
+            }
+        }
+    } else {
+        Write-Host "  No queues found."
     }
-} else {
-    Write-Host "  No queues found."
+    
+    Write-Host "RabbitMQ cleanup complete." -ForegroundColor Green
+}
+catch {
+    Write-Warning "Failed to connect to RabbitMQ Management API: $_"
+    Write-Warning "Make sure RabbitMQ is running (.\24_StartRabbitMQ.ps1)"
 }
 
-# Delete all topics (subscriptions are deleted with the topic)
-$topics = az servicebus topic list `
-    --resource-group $script:sbResourceGroup `
-    --namespace-name $script:svcBusNamespaceNameLocal `
-    --query "[].name" -o tsv
 
-if ($topics) {
-    foreach ($t in $topics) {
-        Write-Host "  Deleting topic: $t"
-        az servicebus topic delete `
-            --resource-group $script:sbResourceGroup `
-            --namespace-name $script:svcBusNamespaceNameLocal `
-            --name $t --only-show-errors
-    }
-} else {
-    Write-Host "  No topics found."
-}
-
-Write-Host "Service Bus cleanup complete." -ForegroundColor Green
-
-
-Write-Host "Local reset complete."
+Write-Host "Local reset complete." -ForegroundColor Green
+exit 0

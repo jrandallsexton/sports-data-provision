@@ -4,13 +4,20 @@
 # =========================
 <#
 .SYNOPSIS
-    Complete pipeline to copy production data to local PostgreSQL.
+    Complete pipeline to copy production data to local PostgreSQL and MongoDB.
 
 .DESCRIPTION
     Executes the following steps:
     1. Backup production databases to local disk (20_BackupProdToLocalDisk.ps1)
     2. Reset local databases (10_ResetLocalData.ps1 with forced YES)
     3. Restore backups to local databases (18_RestoreLocalFromLocalDumps.ps1)
+    4. Copy production MongoDB to local MongoDB (23_CopyMongoDbProdToLocal.ps1)
+
+.PARAMETER Force
+    Skip the confirmation prompt
+
+.PARAMETER NoBackup
+    Skip the production backup step (Step 1). Useful for testing the reset/restore steps.
 
 .NOTES
     This script will DESTROY all local data and replace it with production data.
@@ -18,7 +25,8 @@
 #>
 [CmdletBinding()]
 param(
-    [switch]$Force
+    [switch]$Force,
+    [switch]$NoBackup
 )
 
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
@@ -51,29 +59,34 @@ Write-Host ""
 # Step 1: Backup Production to Local Disk
 # =========================
 
-Write-Host "[STEP 1/3] Backing up production databases to local disk..." -ForegroundColor Cyan
-Write-Host ""
+if ($NoBackup) {
+    Write-Host "[STEP 1/4] SKIPPED - NoBackup flag set" -ForegroundColor Yellow
+    Write-Host ""
+} else {
+    Write-Host "[STEP 1/4] Backing up production databases to local disk..." -ForegroundColor Cyan
+    Write-Host ""
 
-$backupScript = Join-Path $scriptDir "20_BackupProdToLocalDisk.ps1"
-if (-not (Test-Path $backupScript)) {
-    throw "ERROR: Backup script not found: $backupScript"
+    $backupScript = Join-Path $scriptDir "20_BackupProdToLocalDisk.ps1"
+    if (-not (Test-Path $backupScript)) {
+        throw "ERROR: Backup script not found: $backupScript"
+    }
+
+    & $backupScript
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "ERROR: Production backup failed with exit code $LASTEXITCODE"
+    }
+
+    Write-Host ""
+    Write-Host "Production backup completed" -ForegroundColor Green
+    Write-Host ""
 }
-
-& $backupScript
-
-if ($LASTEXITCODE -ne 0) {
-    throw "ERROR: Production backup failed with exit code $LASTEXITCODE"
-}
-
-Write-Host ""
-Write-Host "Production backup completed" -ForegroundColor Green
-Write-Host ""
 
 # =========================
 # Step 2: Reset Local Data (Auto-confirm YES)
 # =========================
 
-Write-Host "[STEP 2/3] Resetting local databases..." -ForegroundColor Cyan
+Write-Host "[STEP 2/4] Resetting local databases..." -ForegroundColor Cyan
 Write-Host ""
 
 $resetScript = Join-Path $scriptDir "10_ResetLocalData.ps1"
@@ -97,7 +110,7 @@ Write-Host ""
 # Step 3: Restore from Local Dumps
 # =========================
 
-Write-Host "[STEP 3/3] Restoring production backups to local databases..." -ForegroundColor Cyan
+Write-Host "[STEP 3/4] Restoring production backups to local databases..." -ForegroundColor Cyan
 Write-Host ""
 
 $restoreScript = Join-Path $scriptDir "18_RestoreLocalFromLocalDumps.ps1"
@@ -122,6 +135,29 @@ Remove-Item $tempRestoreScript -Force
 
 Write-Host ""
 Write-Host "Restore completed" -ForegroundColor Green
+Write-Host ""
+
+# =========================
+# Step 4: Copy MongoDB Production to Local
+# =========================
+
+Write-Host "[STEP 4/4] Copying MongoDB production data to local..." -ForegroundColor Cyan
+Write-Host ""
+
+$mongoScript = Join-Path $scriptDir "23_CopyMongoDbProdToLocal.ps1"
+if (-not (Test-Path $mongoScript)) {
+    throw "ERROR: MongoDB copy script not found: $mongoScript"
+}
+
+# Pass -Force flag to skip confir(PostgreSQL + MongoDB) mation prompt
+& $mongoScript -Force
+
+if ($LASTEXITCODE -ne 0) {
+    throw "ERROR: MongoDB copy failed with exit code $LASTEXITCODE"
+}
+
+Write-Host ""
+Write-Host "MongoDB copy completed" -ForegroundColor Green
 Write-Host ""
 
 # =========================

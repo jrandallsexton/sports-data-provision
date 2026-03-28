@@ -9,9 +9,9 @@ Write-Host "Finding pods..." -ForegroundColor Cyan
 # Get all pod names
 $pods = kubectl get pods -n default -o json | ConvertFrom-Json | Select-Object -ExpandProperty items
 
-$providerPod = $pods | Where-Object { $_.metadata.name -like "provider-football-ncaa-*" } | Select-Object -First 1 -ExpandProperty metadata | Select-Object -ExpandProperty name
-$producerPod = $pods | Where-Object { $_.metadata.name -like "producer-football-ncaa-*" } | Select-Object -First 1 -ExpandProperty metadata | Select-Object -ExpandProperty name
-$apiPod = $pods | Where-Object { $_.metadata.name -like "api-all-*" } | Select-Object -First 1 -ExpandProperty metadata | Select-Object -ExpandProperty name
+$providerPod = $pods | Where-Object { $_.metadata.name -like "provider-football-ncaa-*" } | Sort-Object { [datetime]$_.metadata.creationTimestamp } | Select-Object -First 1 -ExpandProperty metadata | Select-Object -ExpandProperty name
+$producerPod = $pods | Where-Object { $_.metadata.name -like "producer-football-ncaa-*" } | Sort-Object { [datetime]$_.metadata.creationTimestamp } | Select-Object -First 1 -ExpandProperty metadata | Select-Object -ExpandProperty name
+$apiPod = $pods | Where-Object { $_.metadata.name -like "api-all-*" } | Sort-Object { [datetime]$_.metadata.creationTimestamp } | Select-Object -First 1 -ExpandProperty metadata | Select-Object -ExpandProperty name
 
 # Check if all pods were found
 $missingPods = @()
