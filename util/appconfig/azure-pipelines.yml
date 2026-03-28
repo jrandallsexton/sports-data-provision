@@ -41,6 +41,9 @@ parameters:
 
 variables:
   azureSubscription: 'dev-sports-data-api-svc-conn'
+  # Set APPCONFIG_CONNECTION_STRING as a secret pipeline variable in the Azure DevOps UI.
+  # This bypasses ARM resource lookup which requires additional RBAC permissions.
+  # Value: the Primary Read-Write connection string from the App Config store.
 
 stages:
 - stage: Validate
@@ -108,7 +111,7 @@ stages:
         scriptType: 'pscore'
         scriptLocation: 'scriptPath'
         scriptPath: '$(Build.SourcesDirectory)/util/appconfig/Apply-AppConfig.ps1'
-        arguments: '-StoreName "${{ parameters.storeName }}" -Label "${{ parameters.label }}" -DryRun'
+        arguments: '-StoreName "${{ parameters.storeName }}" -ConnectionString "$(APPCONFIG_CONNECTION_STRING)" -Label "${{ parameters.label }}" -DryRun'
 
 - stage: Apply
   displayName: 'Apply to App Config'
@@ -139,7 +142,7 @@ stages:
               scriptType: 'pscore'
               scriptLocation: 'scriptPath'
               scriptPath: '$(Build.SourcesDirectory)/util/appconfig/Apply-AppConfig.ps1'
-              arguments: '-StoreName "${{ parameters.storeName }}" -Label "${{ parameters.label }}"'
+              arguments: '-StoreName "${{ parameters.storeName }}" -ConnectionString "$(APPCONFIG_CONNECTION_STRING)" -Label "${{ parameters.label }}"'
 
           - task: PowerShell@2
             displayName: 'Summary'

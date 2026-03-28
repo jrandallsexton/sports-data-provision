@@ -17,6 +17,7 @@
 
 param(
     [string]$StoreName = "sportdeetsappconfig2",
+    [string]$ConnectionString = "",
     [string]$Label = "*",
     [string]$ManifestPath = "",
     [switch]$DryRun
@@ -43,8 +44,17 @@ if ($targetLabels.Count -eq 0) {
     exit 0
 }
 
+# Build the store identifier args used for all az commands
+# Prefer --connection-string (data-plane direct) over --name (requires ARM read permission)
+$storeArgs = if ($ConnectionString) {
+    @("--connection-string", $ConnectionString)
+} else {
+    @("--name", $StoreName)
+}
+$storeDisplay = if ($ConnectionString) { "$StoreName (via connection string)" } else { $StoreName }
+
 $mode = if ($DryRun) { "DRY RUN" } else { "APPLY" }
-Write-Host "[$mode] Targeting $($targetLabels.Count) label(s) in store: $StoreName" -ForegroundColor Cyan
+Write-Host "[$mode] Targeting $($targetLabels.Count) label(s) in store: $storeDisplay" -ForegroundColor Cyan
 Write-Host ""
 
 $totalPlain = 0
@@ -95,7 +105,7 @@ try {
             $plainEntries | ConvertTo-Json -Depth 5 | Set-Content -Path $tempFile -Encoding UTF8
 
             $importResult = az appconfig kv import `
-                --name $StoreName `
+                @storeArgs `
                 --source file `
                 --path $tempFile `
                 --format json `
@@ -123,7 +133,7 @@ try {
                 $secretUri = $kvJson.uri
 
                 $setResult = az appconfig kv set-keyvault `
-                    --name $StoreName `
+                    @storeArgs `
                     --key $key `
                     --label $lbl `
                     --secret-identifier $secretUri `
