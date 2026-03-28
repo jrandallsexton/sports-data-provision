@@ -1140,6 +1140,10 @@
       "value": "http://producer-svc-football-nfl/api/"
     },
     {
+      "key": "CommonConfig:Messaging:RabbitMq:Host",
+      "value": "rabbitmq-nfl.messaging.svc.cluster.local"
+    },
+    {
       "key": "CommonConfig:ProducerClientConfig:ApiUrl",
       "value": "http://producer-svc-football-nfl/api/"
     },
