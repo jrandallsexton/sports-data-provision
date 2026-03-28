@@ -1186,7 +1186,7 @@
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
-      "value": "FootballNcaa"
+      "value": "FootballNfl"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
