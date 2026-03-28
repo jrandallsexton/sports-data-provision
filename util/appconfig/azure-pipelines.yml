@@ -1,0 +1,153 @@
+# Azure App Configuration - IaC Pipeline
+#
+# Applies manifest.json to Azure App Configuration.
+# Triggered on changes to the appconfig directory on main branch.
+# Can also be run manually with label filtering.
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - 'util/appconfig/manifest.json'
+
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - 'util/appconfig/**'
+
+pool:
+  name: Default
+  demands:
+    - Agent.Name -equals Bender
+
+parameters:
+  - name: label
+    displayName: 'Label filter (e.g., "Prod.FootballNfl" or "*" for all)'
+    type: string
+    default: '*'
+  - name: dryRun
+    displayName: 'Dry run (preview only, no changes)'
+    type: boolean
+    default: true
+  - name: storeName
+    displayName: 'App Config store name'
+    type: string
+    default: 'sportdeetsappconfig2'
+
+variables:
+  azureSubscription: 'dev-sports-data-api-svc-conn'
+
+stages:
+- stage: Validate
+  displayName: 'Validate Manifest'
+  jobs:
+  - job: Validate
+    displayName: 'Parse and validate manifest.json'
+    steps:
+    - task: PowerShell@2
+      displayName: 'Validate manifest structure'
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          $manifestPath = "$(Build.SourcesDirectory)/util/appconfig/manifest.json"
+
+          if (-not (Test-Path $manifestPath)) {
+            Write-Error "manifest.json not found at $manifestPath"
+            exit 1
+          }
+
+          try {
+            $manifest = Get-Content -Path $manifestPath -Raw | ConvertFrom-Json -AsHashtable
+          }
+          catch {
+            Write-Error "manifest.json is not valid JSON: $_"
+            exit 1
+          }
+
+          $totalEntries = 0
+          $labels = @()
+          foreach ($label in $manifest.Keys | Sort-Object) {
+            $count = $manifest[$label].Count
+            $totalEntries += $count
+
+            # Validate each entry has required fields
+            foreach ($entry in $manifest[$label]) {
+              if (-not $entry["key"]) {
+                Write-Error "Entry missing 'key' field in label '$label'"
+                exit 1
+              }
+              if ($null -eq $entry["value"]) {
+                Write-Warning "Entry '$($entry["key"])' in label '$label' has null value"
+              }
+            }
+
+            $labels += "$label ($count)"
+          }
+
+          Write-Host "Manifest valid: $totalEntries entries across $($manifest.Keys.Count) labels" -ForegroundColor Green
+          Write-Host "Labels: $($labels -join ', ')"
+
+- stage: DryRun
+  displayName: 'Dry Run'
+  dependsOn: Validate
+  condition: succeeded()
+  jobs:
+  - job: DryRun
+    displayName: 'Preview changes'
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Dry run - preview changes'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptType: 'pscore'
+        scriptLocation: 'scriptPath'
+        scriptPath: '$(Build.SourcesDirectory)/util/appconfig/Apply-AppConfig.ps1'
+        arguments: '-StoreName "${{ parameters.storeName }}" -Label "${{ parameters.label }}" -DryRun'
+
+- stage: Apply
+  displayName: 'Apply to App Config'
+  dependsOn: DryRun
+  condition: |
+    and(
+      succeeded(),
+      eq(${{ parameters.dryRun }}, false),
+      or(
+        eq(variables['Build.SourceBranch'], 'refs/heads/main'),
+        eq(variables['Build.Reason'], 'Manual')
+      )
+    )
+  jobs:
+  - deployment: Apply
+    displayName: 'Apply manifest'
+    environment: 'appconfig-${{ parameters.storeName }}'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+
+          - task: AzureCLI@2
+            displayName: 'Apply manifest to App Config'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptType: 'pscore'
+              scriptLocation: 'scriptPath'
+              scriptPath: '$(Build.SourcesDirectory)/util/appconfig/Apply-AppConfig.ps1'
+              arguments: '-StoreName "${{ parameters.storeName }}" -Label "${{ parameters.label }}"'
+
+          - task: PowerShell@2
+            displayName: 'Summary'
+            inputs:
+              pwsh: true
+              targetType: 'inline'
+              script: |
+                Write-Host "App Config updated successfully." -ForegroundColor Green
+                Write-Host "Store: ${{ parameters.storeName }}"
+                Write-Host "Label: ${{ parameters.label }}"
+                Write-Host "Branch: $(Build.SourceBranch)"

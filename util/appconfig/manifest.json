@@ -1,0 +1,1209 @@
+{
+  "Dev": [
+    {
+      "key": "CommonConfig",
+      "value": "{\"FirebaseConfig\": {\"AuthProviderX509CertUrl\": \"https://www.googleapis.com/oauth2/v1/certs\", \"AuthUri\": \"https://accounts.google.com/o/oauth2/auth\", \"ClientEmail\": \"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\", \"ClientId\": \"107889643554494218195\", \"ClientX509CertUrl\": \"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\", \"PriavateKeyId\": \"f3ec3c950b1b65c572f0b2f552beb174e0749b40\", \"PrivateKey\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ...\\n-----END PRIVATE KEY\", \"ProjectId\": \"sportdeets-dev\", \"TokenUri\": \"https://oauth2.googleapis.com/token\", \"Type\": \"service_account\", \"UniverseDomain\": \"googleapis.com\"}, \"FirebaseConfigJson\": \"{\\\"type\\\":\\\"service_account\\\",\\\"project_id\\\":\\\"sportdeets-dev\\\",\\\"private_key_id\\\":\\\"f3ec3c950b1b65c572f0b2f552beb174e0749b40\\\",\\\"private_key\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDJSpWr+jHCIInj\\\\n17eHA0dudio4hpNHQOkerQ1b9tcnpBo4fUCx+b3a7cDAcovQXypmcp5zkX2FEh0T\\\\nrqTZXgoOAPDlnvNhj5JqMCNZtl45Nmk+6DcCxDfGJHl81vaMlHAOHOJnA2Zal+MJ\\\\nI9nIhYwsNS4eHwACUwOAIwcLqeA5Z5mz6GH0g46wym0SuIf1F5tAE1/5O1bWe0vF\\\\nFcZHK0TAUYzEXKjDRaHobOoK2X0CiHPY9edPLOtXQR2KsySoJEwlBSnOyX1PFQsf\\\\nRpgzu1cnsRwLrdxRUkY1efDechYoFAcXhJSHTjR/DFtm1KW0LIQPrcOlM1aHeAug\\\\nnDsvfPM3AgMBAAECggEACl9oDWfZVuYYr5+G9b5NrjEI+vG1ttxu8ZA8WdVYqqfH\\\\nsXUu4hz6/hmgrv9tb1bqwe29IY/JQT644IdFjRf4pQEXvirDOESkPbRDq2n85Vja\\\\n8o1tLEd9PPOAjoDV9/zm4KtMtWnqRS0s22SNYp+9z0IMTCwPyDmL5XdTSR6/ZGXN\\\\nULCEk3pKsKik3jcDP5vIHFAtqu0cCRuX1ATbM+Pk+jmMPxn43882LMjQOCcEjxlg\\\\n0X4lwm/Ritn3/XyOqvsUX1AT5uYYJR9KZ40C9dJTjWaLvaekozVIm8GRVCi14zxB\\\\nmjsCvb2aLzWMkTk7P0bkytbB1VWXaWNUd1uz/zc8rQKBgQD4Rq8JVQu1C+PeYQc2\\\\npAEUmqTUNPTEXUDW6g0xRV+kl6BE3grf+n09nfOAGndZl6CKH8P7tn8583AwVnZ6\\\\nGTwOm7gqXFNFt+66t2UtY6CY2IWucyhqPg7TMtTDFrwoqnrw8gytRLB5Blom6EuJ\\\\nKIAyNCRyDbJLhvB5IHks50qhYwKBgQDPjbSoZ/cJAyL1N0rL7o3fxVxnuhwTIguA\\\\nUZNi225/sYplYDUBlw/gFygJ79WyaVTZMgperACcTcGtR7PBBLL/8Rd9Yh0lJCYC\\\\nQ8RFI4RL14T90keK8zErWRkZye5lxOSCpaFeroVuMRhNuoyQEat7DTWBV0Q+KHwc\\\\nnMCfqoIZHQKBgQDIVLiN7iqpJnPyjxYz97fLeVDAzg4mmBxmjaqhdBnNhG9UwlnC\\\\nCqud2WKOnkxpZVirux/3bnVQPGbtCgdFVDFKlEnRHHgwzE58KNkh+76tNiD/93nH\\\\n6FUsA1r8I88lfRIAcz7ZXJCMxxxdQpkYji6K09oIkZapLLPC+Pntyp9EgwKBgQCd\\\\nPjt3NsS2hDTQ2KIHHGVJ+ekHAL3SVQGnpqXlyF7PyT8TjK671KmHWaPQ223n69sH\\\\nbdzjWqZfxJ0N3Xu2qQu/0fS83j88a0WMg7DHvJ+3IcG01sGy6IoA0FCu9Ahz+5Yv\\\\n0LIP3GJkWDeUc9eYMnrbD+fQZL/j46IbvzpD/NbxlQKBgQDxkEZVxOBhxBxGZiAR\\\\nhiMplkVivf7vWZONEN/Y8Xx/GI7eCBZ5S6YuGYxuCvsfeCWO5zDwSLhgo8Q+g/i/\\\\nEEXC/ZL1bA2oEy289zNIFCb1ydXE/yLRI2jaZLBLkmyb0a2uvIpzoSScLVvQ1mvs\\\\nRch3JkQaDyRkIk8VKrVE6RUXPw==\\\\n-----END PRIVATE KEY-----\\\\n\\\",\\\"client_email\\\":\\\"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\\\",\\\"client_id\\\":\\\"107889643554494218195\\\",\\\"auth_uri\\\":\\\"https://accounts.google.com/o/oauth2/auth\\\",\\\"token_uri\\\":\\\"https://oauth2.googleapis.com/token\\\",\\\"auth_provider_x509_cert_url\\\":\\\"https://www.googleapis.com/oauth2/v1/certs\\\",\\\"client_x509_cert_url\\\":\\\"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\\\",\\\"universe_domain\\\":\\\"googleapis.com\\\"}\"}"
+    },
+    {
+      "key": "CommonConfig:Api:AdminToken",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AdminToken\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Api:SupportedModes",
+      "value": "[\"FootballNcaa\"]"
+    },
+    {
+      "key": "CommonConfig:AzureBlobStorageConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureBlobStorageConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:AzureBlobStorageUrl",
+      "value": "https://sportdeetssadev.blob.core.windows.net"
+    },
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:AzureSignalR:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureSignalRConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/DeepSeekApiKey-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:BaseUrl",
+      "value": "https://api.deepseek.com/chat/completions"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:Model",
+      "value": "deepseek-chat"
+    },
+    {
+      "key": "CommonConfig:GoogleMaps:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/GoogleMapsApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Logging:MinimumLevel",
+      "value": "Warning"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:Microsoft",
+      "value": "Error"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:SportsData",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:System",
+      "value": "Error"
+    },
+    {
+      "key": "CommonConfig:Logging:SeqMinimumLevel",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:SeqUri",
+      "value": "https://logging-dev.sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SendGridApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:FromEmail",
+      "value": "randy@sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:TemplateIdInvitation",
+      "value": "d-da1d1d2dd84b47fca20f905b8c9ddb00"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:UrlBase",
+      "value": "dev.sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:OllamaClientConfig:BaseUrl",
+      "value": "https://801f8ee2e75f.ngrok-free.app"
+    },
+    {
+      "key": "CommonConfig:OllamaClientConfig:Model",
+      "value": "mistral"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Enabled",
+      "value": "false"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:Enabled",
+      "value": "false"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:OtlpEndpoint",
+      "value": "http://loki.logging.svc.cluster.local:3100"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:OtlpEndpoint",
+      "value": "http://prometheus-server.monitoring.svc.cluster.local:4317"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:PrometheusEndpoint",
+      "value": "/metrics"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:ServiceVersion",
+      "value": "1.0.0-dev"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:OtlpEndpoint",
+      "value": "http://tempo.monitoring.svc.cluster.local:4317"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:SamplingRatio",
+      "value": "1.0"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:SeqUri",
+      "value": "https://logging-dev.sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:SqlBaseConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SqlBaseConnectionString-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:YouTubeClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/YouTubeApiKey-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Api:BackgroundProcessor:MinWorkers",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Api:CanonicalDataProvider:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/CanonicalDataProviderConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Api:SyntheticUserPickStyles",
+      "value": "{\"moderate\": {\"name\": \"moderate\", \"description\": \"Balanced risk tolerance\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.6}, {\"maxSpread\": 14, \"minConfidence\": 0.7}, {\"maxSpread\": 21, \"minConfidence\": 0.8}, {\"maxSpread\": null, \"minConfidence\": 0.9}]}, \"conservative\": {\"name\": \"conservative\", \"description\": \"Risk-averse, higher confidence requirements\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.6}, {\"maxSpread\": 10, \"minConfidence\": 0.7}, {\"maxSpread\": 14, \"minConfidence\": 0.8}, {\"maxSpread\": 21, \"minConfidence\": 0.9}, {\"maxSpread\": null, \"minConfidence\": 0.95}]}, \"aggressive\": {\"name\": \"aggressive\", \"description\": \"Risk-tolerant, trusts model predictions more\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.55}, {\"maxSpread\": 14, \"minConfidence\": 0.6}, {\"maxSpread\": 21, \"minConfidence\": 0.7}, {\"maxSpread\": null, \"minConfidence\": 0.8}]}}"
+    },
+    {
+      "key": "SportsData.Producer:BackgroundProcessor:MinWorkers",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Producer:DocumentProcessing:EnableDependencyRequests",
+      "value": "false"
+    },
+    {
+      "key": "SportsData.Provider:BackgroundProcessor:MinWorkers",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:ForceLiveFetch",
+      "value": "true"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:PersistLocally",
+      "value": "false"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:ReadFromCache",
+      "value": "false"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "provider-dev"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Provider",
+      "value": "Cosmos"
+    }
+  ],
+  "Dev.All": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "https://producer-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "https://provider-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProviderService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    }
+  ],
+  "Dev.FootballNcaa": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "https://contest-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ContestService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/FranchiseService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "https://notification-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:ApiUrl",
+      "value": "https://player-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/PlayerService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "https://producer-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProducerService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "https://provider-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProviderService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "https://season-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SeasonService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:ApiUrl",
+      "value": "https://producer-football-ncaa-dev.sportdeets.com/api"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/VenueService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    }
+  ],
+  "Dev.FootballNfl": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "https://contest-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ContestService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/FranchiseService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "https://notification-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:ApiUrl",
+      "value": "https://player-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/PlayerService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "https://producer-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProducerService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "https://provider-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProviderService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "https://season-football-ncaa-dev.sportdeets.com/api/"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SeasonService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:ApiUrl",
+      "value": "https://producer-football-ncaa-dev.sportdeets.com/api"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/VenueService-ApiKey-DEV\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    }
+  ],
+  "Local": [
+    {
+      "key": "CommonConfig",
+      "value": "{\"FirebaseConfig\": {\"AuthProviderX509CertUrl\": \"https://www.googleapis.com/oauth2/v1/certs\", \"AuthUri\": \"https://accounts.google.com/o/oauth2/auth\", \"ClientEmail\": \"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\", \"ClientId\": \"107889643554494218195\", \"ClientX509CertUrl\": \"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\", \"PriavateKeyId\": \"f3ec3c950b1b65c572f0b2f552beb174e0749b40\", \"PrivateKey\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ...\\n-----END PRIVATE KEY\", \"ProjectId\": \"sportdeets-dev\", \"TokenUri\": \"https://oauth2.googleapis.com/token\", \"Type\": \"service_account\", \"UniverseDomain\": \"googleapis.com\"}, \"FirebaseConfigJson\": \"{\\\"type\\\":\\\"service_account\\\",\\\"project_id\\\":\\\"sportdeets-dev\\\",\\\"private_key_id\\\":\\\"f3ec3c950b1b65c572f0b2f552beb174e0749b40\\\",\\\"private_key\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDJSpWr+jHCIInj\\\\n17eHA0dudio4hpNHQOkerQ1b9tcnpBo4fUCx+b3a7cDAcovQXypmcp5zkX2FEh0T\\\\nrqTZXgoOAPDlnvNhj5JqMCNZtl45Nmk+6DcCxDfGJHl81vaMlHAOHOJnA2Zal+MJ\\\\nI9nIhYwsNS4eHwACUwOAIwcLqeA5Z5mz6GH0g46wym0SuIf1F5tAE1/5O1bWe0vF\\\\nFcZHK0TAUYzEXKjDRaHobOoK2X0CiHPY9edPLOtXQR2KsySoJEwlBSnOyX1PFQsf\\\\nRpgzu1cnsRwLrdxRUkY1efDechYoFAcXhJSHTjR/DFtm1KW0LIQPrcOlM1aHeAug\\\\nnDsvfPM3AgMBAAECggEACl9oDWfZVuYYr5+G9b5NrjEI+vG1ttxu8ZA8WdVYqqfH\\\\nsXUu4hz6/hmgrv9tb1bqwe29IY/JQT644IdFjRf4pQEXvirDOESkPbRDq2n85Vja\\\\n8o1tLEd9PPOAjoDV9/zm4KtMtWnqRS0s22SNYp+9z0IMTCwPyDmL5XdTSR6/ZGXN\\\\nULCEk3pKsKik3jcDP5vIHFAtqu0cCRuX1ATbM+Pk+jmMPxn43882LMjQOCcEjxlg\\\\n0X4lwm/Ritn3/XyOqvsUX1AT5uYYJR9KZ40C9dJTjWaLvaekozVIm8GRVCi14zxB\\\\nmjsCvb2aLzWMkTk7P0bkytbB1VWXaWNUd1uz/zc8rQKBgQD4Rq8JVQu1C+PeYQc2\\\\npAEUmqTUNPTEXUDW6g0xRV+kl6BE3grf+n09nfOAGndZl6CKH8P7tn8583AwVnZ6\\\\nGTwOm7gqXFNFt+66t2UtY6CY2IWucyhqPg7TMtTDFrwoqnrw8gytRLB5Blom6EuJ\\\\nKIAyNCRyDbJLhvB5IHks50qhYwKBgQDPjbSoZ/cJAyL1N0rL7o3fxVxnuhwTIguA\\\\nUZNi225/sYplYDUBlw/gFygJ79WyaVTZMgperACcTcGtR7PBBLL/8Rd9Yh0lJCYC\\\\nQ8RFI4RL14T90keK8zErWRkZye5lxOSCpaFeroVuMRhNuoyQEat7DTWBV0Q+KHwc\\\\nnMCfqoIZHQKBgQDIVLiN7iqpJnPyjxYz97fLeVDAzg4mmBxmjaqhdBnNhG9UwlnC\\\\nCqud2WKOnkxpZVirux/3bnVQPGbtCgdFVDFKlEnRHHgwzE58KNkh+76tNiD/93nH\\\\n6FUsA1r8I88lfRIAcz7ZXJCMxxxdQpkYji6K09oIkZapLLPC+Pntyp9EgwKBgQCd\\\\nPjt3NsS2hDTQ2KIHHGVJ+ekHAL3SVQGnpqXlyF7PyT8TjK671KmHWaPQ223n69sH\\\\nbdzjWqZfxJ0N3Xu2qQu/0fS83j88a0WMg7DHvJ+3IcG01sGy6IoA0FCu9Ahz+5Yv\\\\n0LIP3GJkWDeUc9eYMnrbD+fQZL/j46IbvzpD/NbxlQKBgQDxkEZVxOBhxBxGZiAR\\\\nhiMplkVivf7vWZONEN/Y8Xx/GI7eCBZ5S6YuGYxuCvsfeCWO5zDwSLhgo8Q+g/i/\\\\nEEXC/ZL1bA2oEy289zNIFCb1ydXE/yLRI2jaZLBLkmyb0a2uvIpzoSScLVvQ1mvs\\\\nRch3JkQaDyRkIk8VKrVE6RUXPw==\\\\n-----END PRIVATE KEY-----\\\\n\\\",\\\"client_email\\\":\\\"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\\\",\\\"client_id\\\":\\\"107889643554494218195\\\",\\\"auth_uri\\\":\\\"https://accounts.google.com/o/oauth2/auth\\\",\\\"token_uri\\\":\\\"https://oauth2.googleapis.com/token\\\",\\\"auth_provider_x509_cert_url\\\":\\\"https://www.googleapis.com/oauth2/v1/certs\\\",\\\"client_x509_cert_url\\\":\\\"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\\\",\\\"universe_domain\\\":\\\"googleapis.com\\\"}\"}"
+    },
+    {
+      "key": "CommonConfig:Api:AdminToken",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AdminToken\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Api:SupportedModes",
+      "value": "[\"FootballNcaa\"]"
+    },
+    {
+      "key": "CommonConfig:AzureBlobStorageConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureBlobStorageConnStr-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:AzureBlobStorageUrl",
+      "value": "http://127.0.0.1:10000/devstoreaccount1"
+    },
+    {
+      "key": "CommonConfig:AzureSignalR:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureSignalRConnStr-Dev\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ContestService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/DeepSeekApiKey-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:BaseUrl",
+      "value": "https://api.deepseek.com/chat/completions"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:Model",
+      "value": "deepseek-chat"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/FranchiseService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:GoogleMaps:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/GoogleMapsApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Logging:MinimumLevel",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:Microsoft",
+      "value": "Warning"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:SportsData",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:System",
+      "value": "Warning"
+    },
+    {
+      "key": "CommonConfig:Logging:SeqMinimumLevel",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:SeqUri",
+      "value": "http://localhost:5341/"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Host",
+      "value": "localhost"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/RabbitMqPassword-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Username",
+      "value": "sportsdata"
+    },
+    {
+      "key": "CommonConfig:Messaging:UseRabbitMq",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "http://localhost:5068/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SendGridApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:FromEmail",
+      "value": "randy@sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:TemplateIdInvitation",
+      "value": "d-da1d1d2dd84b47fca20f905b8c9ddb00"
+    },
+    {
+      "key": "CommonConfig:OllamaClientConfig:BaseUrl",
+      "value": "http://localhost:11434"
+    },
+    {
+      "key": "CommonConfig:OllamaClientConfig:Model",
+      "value": "mistral"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Enabled",
+      "value": "false"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:Enabled",
+      "value": "false"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:OtlpEndpoint",
+      "value": "http://localhost:3100"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:OtlpEndpoint",
+      "value": "http://localhost:4317"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:PrometheusEndpoint",
+      "value": "/metrics"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:ServiceVersion",
+      "value": "1.0.0-local"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:OtlpEndpoint",
+      "value": "http://localhost:4317"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:SamplingRatio",
+      "value": "1.0"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:ApiUrl",
+      "value": "http://localhost:5163/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/PlayerService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProducerService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "http://localhost:5205/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProviderService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SeasonService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeqUri",
+      "value": "http://localhost:5341/"
+    },
+    {
+      "key": "CommonConfig:SqlBaseConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SqlBaseConnectionString-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/VenueService-ApiKey-LOCAL\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:YouTubeClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/YouTubeApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Api:ApiConfig:BaseUrl",
+      "value": "http://localhost:5262/api/"
+    },
+    {
+      "key": "SportsData.Api:ApiConfig:UserIdSystem",
+      "value": "11111111-1111-1111-1111-111111111111"
+    },
+    {
+      "key": "SportsData.Api:BackgroundProcessor:MinWorkers",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Api:CanonicalDataProvider:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/CanonicalDataProviderConnStr-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Api:SyntheticUserPickStyles",
+      "value": "{\"moderate\": {\"name\": \"moderate\", \"description\": \"Balanced risk tolerance\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.6}, {\"maxSpread\": 14, \"minConfidence\": 0.7}, {\"maxSpread\": 21, \"minConfidence\": 0.8}, {\"maxSpread\": null, \"minConfidence\": 0.9}]}, \"conservative\": {\"name\": \"conservative\", \"description\": \"Risk-averse, higher confidence requirements\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.6}, {\"maxSpread\": 10, \"minConfidence\": 0.7}, {\"maxSpread\": 14, \"minConfidence\": 0.8}, {\"maxSpread\": 21, \"minConfidence\": 0.9}, {\"maxSpread\": null, \"minConfidence\": 0.95}]}, \"aggressive\": {\"name\": \"aggressive\", \"description\": \"Risk-tolerant, trusts model predictions more\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.55}, {\"maxSpread\": 14, \"minConfidence\": 0.6}, {\"maxSpread\": 21, \"minConfidence\": 0.7}, {\"maxSpread\": null, \"minConfidence\": 0.8}]}}"
+    },
+    {
+      "key": "SportsData.Producer:BackgroundProcessor:MinWorkers",
+      "value": "50"
+    },
+    {
+      "key": "SportsData.Producer:DocumentProcessing:EnableDependencyRequests",
+      "value": "true"
+    },
+    {
+      "key": "SportsData.Provider:BackgroundProcessor:MinWorkers",
+      "value": "50"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:ForceLiveFetch",
+      "value": "false"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:LocalCacheDirectory",
+      "value": "C:\\\\temp\\\\sports-data"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:PersistLocally",
+      "value": "true"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:ReadFromCache",
+      "value": "true"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing",
+      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/MongoDbPassword-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Provider",
+      "value": "Mongo"
+    }
+  ],
+  "Local.All": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    }
+  ],
+  "Local.FootballNcaa": [
+    {
+      "key": "CommonConfig",
+      "value": "{\"FirebaseConfig\": {\"AuthProviderX509CertUrl\": \"https://www.googleapis.com/oauth2/v1/certs\", \"AuthUri\": \"https://accounts.google.com/o/oauth2/auth\", \"ClientEmail\": \"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\", \"ClientId\": \"107889643554494218195\", \"ClientX509CertUrl\": \"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\", \"PriavateKeyId\": \"f3ec3c950b1b65c572f0b2f552beb174e0749b40\", \"PrivateKey\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ...\\n-----END PRIVATE KEY\", \"ProjectId\": \"sportdeets-dev\", \"TokenUri\": \"https://oauth2.googleapis.com/token\", \"Type\": \"service_account\", \"UniverseDomain\": \"googleapis.com\"}, \"FirebaseConfigJson\": \"{\\\"type\\\":\\\"service_account\\\",\\\"project_id\\\":\\\"sportdeets-dev\\\",\\\"private_key_id\\\":\\\"f3ec3c950b1b65c572f0b2f552beb174e0749b40\\\",\\\"private_key\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDJSpWr+jHCIInj\\\\n17eHA0dudio4hpNHQOkerQ1b9tcnpBo4fUCx+b3a7cDAcovQXypmcp5zkX2FEh0T\\\\nrqTZXgoOAPDlnvNhj5JqMCNZtl45Nmk+6DcCxDfGJHl81vaMlHAOHOJnA2Zal+MJ\\\\nI9nIhYwsNS4eHwACUwOAIwcLqeA5Z5mz6GH0g46wym0SuIf1F5tAE1/5O1bWe0vF\\\\nFcZHK0TAUYzEXKjDRaHobOoK2X0CiHPY9edPLOtXQR2KsySoJEwlBSnOyX1PFQsf\\\\nRpgzu1cnsRwLrdxRUkY1efDechYoFAcXhJSHTjR/DFtm1KW0LIQPrcOlM1aHeAug\\\\nnDsvfPM3AgMBAAECggEACl9oDWfZVuYYr5+G9b5NrjEI+vG1ttxu8ZA8WdVYqqfH\\\\nsXUu4hz6/hmgrv9tb1bqwe29IY/JQT644IdFjRf4pQEXvirDOESkPbRDq2n85Vja\\\\n8o1tLEd9PPOAjoDV9/zm4KtMtWnqRS0s22SNYp+9z0IMTCwPyDmL5XdTSR6/ZGXN\\\\nULCEk3pKsKik3jcDP5vIHFAtqu0cCRuX1ATbM+Pk+jmMPxn43882LMjQOCcEjxlg\\\\n0X4lwm/Ritn3/XyOqvsUX1AT5uYYJR9KZ40C9dJTjWaLvaekozVIm8GRVCi14zxB\\\\nmjsCvb2aLzWMkTk7P0bkytbB1VWXaWNUd1uz/zc8rQKBgQD4Rq8JVQu1C+PeYQc2\\\\npAEUmqTUNPTEXUDW6g0xRV+kl6BE3grf+n09nfOAGndZl6CKH8P7tn8583AwVnZ6\\\\nGTwOm7gqXFNFt+66t2UtY6CY2IWucyhqPg7TMtTDFrwoqnrw8gytRLB5Blom6EuJ\\\\nKIAyNCRyDbJLhvB5IHks50qhYwKBgQDPjbSoZ/cJAyL1N0rL7o3fxVxnuhwTIguA\\\\nUZNi225/sYplYDUBlw/gFygJ79WyaVTZMgperACcTcGtR7PBBLL/8Rd9Yh0lJCYC\\\\nQ8RFI4RL14T90keK8zErWRkZye5lxOSCpaFeroVuMRhNuoyQEat7DTWBV0Q+KHwc\\\\nnMCfqoIZHQKBgQDIVLiN7iqpJnPyjxYz97fLeVDAzg4mmBxmjaqhdBnNhG9UwlnC\\\\nCqud2WKOnkxpZVirux/3bnVQPGbtCgdFVDFKlEnRHHgwzE58KNkh+76tNiD/93nH\\\\n6FUsA1r8I88lfRIAcz7ZXJCMxxxdQpkYji6K09oIkZapLLPC+Pntyp9EgwKBgQCd\\\\nPjt3NsS2hDTQ2KIHHGVJ+ekHAL3SVQGnpqXlyF7PyT8TjK671KmHWaPQ223n69sH\\\\nbdzjWqZfxJ0N3Xu2qQu/0fS83j88a0WMg7DHvJ+3IcG01sGy6IoA0FCu9Ahz+5Yv\\\\n0LIP3GJkWDeUc9eYMnrbD+fQZL/j46IbvzpD/NbxlQKBgQDxkEZVxOBhxBxGZiAR\\\\nhiMplkVivf7vWZONEN/Y8Xx/GI7eCBZ5S6YuGYxuCvsfeCWO5zDwSLhgo8Q+g/i/\\\\nEEXC/ZL1bA2oEy289zNIFCb1ydXE/yLRI2jaZLBLkmyb0a2uvIpzoSScLVvQ1mvs\\\\nRch3JkQaDyRkIk8VKrVE6RUXPw==\\\\n-----END PRIVATE KEY-----\\\\n\\\",\\\"client_email\\\":\\\"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\\\",\\\"client_id\\\":\\\"107889643554494218195\\\",\\\"auth_uri\\\":\\\"https://accounts.google.com/o/oauth2/auth\\\",\\\"token_uri\\\":\\\"https://oauth2.googleapis.com/token\\\",\\\"auth_provider_x509_cert_url\\\":\\\"https://www.googleapis.com/oauth2/v1/certs\\\",\\\"client_x509_cert_url\\\":\\\"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\\\",\\\"universe_domain\\\":\\\"googleapis.com\\\"}\"}"
+    },
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:CurrentSeason",
+      "value": "2026"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/Provider-CosmosConnString-LOCAL-FootballNcaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "FootballNcaa"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
+      "value": "sd-football-ncaa"
+    }
+  ],
+  "Local.FootballNfl": [
+    {
+      "key": "CommonConfig",
+      "value": "{\"FirebaseConfig\": {\"AuthProviderX509CertUrl\": \"https://www.googleapis.com/oauth2/v1/certs\", \"AuthUri\": \"https://accounts.google.com/o/oauth2/auth\", \"ClientEmail\": \"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\", \"ClientId\": \"107889643554494218195\", \"ClientX509CertUrl\": \"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\", \"PriavateKeyId\": \"f3ec3c950b1b65c572f0b2f552beb174e0749b40\", \"PrivateKey\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ...\\n-----END PRIVATE KEY\", \"ProjectId\": \"sportdeets-dev\", \"TokenUri\": \"https://oauth2.googleapis.com/token\", \"Type\": \"service_account\", \"UniverseDomain\": \"googleapis.com\"}, \"FirebaseConfigJson\": \"{\\\"type\\\":\\\"service_account\\\",\\\"project_id\\\":\\\"sportdeets-dev\\\",\\\"private_key_id\\\":\\\"f3ec3c950b1b65c572f0b2f552beb174e0749b40\\\",\\\"private_key\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDJSpWr+jHCIInj\\\\n17eHA0dudio4hpNHQOkerQ1b9tcnpBo4fUCx+b3a7cDAcovQXypmcp5zkX2FEh0T\\\\nrqTZXgoOAPDlnvNhj5JqMCNZtl45Nmk+6DcCxDfGJHl81vaMlHAOHOJnA2Zal+MJ\\\\nI9nIhYwsNS4eHwACUwOAIwcLqeA5Z5mz6GH0g46wym0SuIf1F5tAE1/5O1bWe0vF\\\\nFcZHK0TAUYzEXKjDRaHobOoK2X0CiHPY9edPLOtXQR2KsySoJEwlBSnOyX1PFQsf\\\\nRpgzu1cnsRwLrdxRUkY1efDechYoFAcXhJSHTjR/DFtm1KW0LIQPrcOlM1aHeAug\\\\nnDsvfPM3AgMBAAECggEACl9oDWfZVuYYr5+G9b5NrjEI+vG1ttxu8ZA8WdVYqqfH\\\\nsXUu4hz6/hmgrv9tb1bqwe29IY/JQT644IdFjRf4pQEXvirDOESkPbRDq2n85Vja\\\\n8o1tLEd9PPOAjoDV9/zm4KtMtWnqRS0s22SNYp+9z0IMTCwPyDmL5XdTSR6/ZGXN\\\\nULCEk3pKsKik3jcDP5vIHFAtqu0cCRuX1ATbM+Pk+jmMPxn43882LMjQOCcEjxlg\\\\n0X4lwm/Ritn3/XyOqvsUX1AT5uYYJR9KZ40C9dJTjWaLvaekozVIm8GRVCi14zxB\\\\nmjsCvb2aLzWMkTk7P0bkytbB1VWXaWNUd1uz/zc8rQKBgQD4Rq8JVQu1C+PeYQc2\\\\npAEUmqTUNPTEXUDW6g0xRV+kl6BE3grf+n09nfOAGndZl6CKH8P7tn8583AwVnZ6\\\\nGTwOm7gqXFNFt+66t2UtY6CY2IWucyhqPg7TMtTDFrwoqnrw8gytRLB5Blom6EuJ\\\\nKIAyNCRyDbJLhvB5IHks50qhYwKBgQDPjbSoZ/cJAyL1N0rL7o3fxVxnuhwTIguA\\\\nUZNi225/sYplYDUBlw/gFygJ79WyaVTZMgperACcTcGtR7PBBLL/8Rd9Yh0lJCYC\\\\nQ8RFI4RL14T90keK8zErWRkZye5lxOSCpaFeroVuMRhNuoyQEat7DTWBV0Q+KHwc\\\\nnMCfqoIZHQKBgQDIVLiN7iqpJnPyjxYz97fLeVDAzg4mmBxmjaqhdBnNhG9UwlnC\\\\nCqud2WKOnkxpZVirux/3bnVQPGbtCgdFVDFKlEnRHHgwzE58KNkh+76tNiD/93nH\\\\n6FUsA1r8I88lfRIAcz7ZXJCMxxxdQpkYji6K09oIkZapLLPC+Pntyp9EgwKBgQCd\\\\nPjt3NsS2hDTQ2KIHHGVJ+ekHAL3SVQGnpqXlyF7PyT8TjK671KmHWaPQ223n69sH\\\\nbdzjWqZfxJ0N3Xu2qQu/0fS83j88a0WMg7DHvJ+3IcG01sGy6IoA0FCu9Ahz+5Yv\\\\n0LIP3GJkWDeUc9eYMnrbD+fQZL/j46IbvzpD/NbxlQKBgQDxkEZVxOBhxBxGZiAR\\\\nhiMplkVivf7vWZONEN/Y8Xx/GI7eCBZ5S6YuGYxuCvsfeCWO5zDwSLhgo8Q+g/i/\\\\nEEXC/ZL1bA2oEy289zNIFCb1ydXE/yLRI2jaZLBLkmyb0a2uvIpzoSScLVvQ1mvs\\\\nRch3JkQaDyRkIk8VKrVE6RUXPw==\\\\n-----END PRIVATE KEY-----\\\\n\\\",\\\"client_email\\\":\\\"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\\\",\\\"client_id\\\":\\\"107889643554494218195\\\",\\\"auth_uri\\\":\\\"https://accounts.google.com/o/oauth2/auth\\\",\\\"token_uri\\\":\\\"https://oauth2.googleapis.com/token\\\",\\\"auth_provider_x509_cert_url\\\":\\\"https://www.googleapis.com/oauth2/v1/certs\\\",\\\"client_x509_cert_url\\\":\\\"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\\\",\\\"universe_domain\\\":\\\"googleapis.com\\\"}\"}"
+    },
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:CurrentSeason",
+      "value": "2026"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/Provider-CosmosConnString-LOCAL-FootballNcaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "FootballNcaa"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
+      "value": "sd-football-ncaa"
+    }
+  ],
+  "Prod": [
+    {
+      "key": "CommonConfig",
+      "value": "{\"FirebaseConfig\": {\"AuthProviderX509CertUrl\": \"https://www.googleapis.com/oauth2/v1/certs\", \"AuthUri\": \"https://accounts.google.com/o/oauth2/auth\", \"ClientEmail\": \"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\", \"ClientId\": \"107889643554494218195\", \"ClientX509CertUrl\": \"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\", \"PriavateKeyId\": \"f3ec3c950b1b65c572f0b2f552beb174e0749b40\", \"PrivateKey\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ...\\n-----END PRIVATE KEY\", \"ProjectId\": \"sportdeets-dev\", \"TokenUri\": \"https://oauth2.googleapis.com/token\", \"Type\": \"service_account\", \"UniverseDomain\": \"googleapis.com\"}, \"FirebaseConfigJson\": \"{\\\"type\\\":\\\"service_account\\\",\\\"project_id\\\":\\\"sportdeets-dev\\\",\\\"private_key_id\\\":\\\"f3ec3c950b1b65c572f0b2f552beb174e0749b40\\\",\\\"private_key\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDJSpWr+jHCIInj\\\\n17eHA0dudio4hpNHQOkerQ1b9tcnpBo4fUCx+b3a7cDAcovQXypmcp5zkX2FEh0T\\\\nrqTZXgoOAPDlnvNhj5JqMCNZtl45Nmk+6DcCxDfGJHl81vaMlHAOHOJnA2Zal+MJ\\\\nI9nIhYwsNS4eHwACUwOAIwcLqeA5Z5mz6GH0g46wym0SuIf1F5tAE1/5O1bWe0vF\\\\nFcZHK0TAUYzEXKjDRaHobOoK2X0CiHPY9edPLOtXQR2KsySoJEwlBSnOyX1PFQsf\\\\nRpgzu1cnsRwLrdxRUkY1efDechYoFAcXhJSHTjR/DFtm1KW0LIQPrcOlM1aHeAug\\\\nnDsvfPM3AgMBAAECggEACl9oDWfZVuYYr5+G9b5NrjEI+vG1ttxu8ZA8WdVYqqfH\\\\nsXUu4hz6/hmgrv9tb1bqwe29IY/JQT644IdFjRf4pQEXvirDOESkPbRDq2n85Vja\\\\n8o1tLEd9PPOAjoDV9/zm4KtMtWnqRS0s22SNYp+9z0IMTCwPyDmL5XdTSR6/ZGXN\\\\nULCEk3pKsKik3jcDP5vIHFAtqu0cCRuX1ATbM+Pk+jmMPxn43882LMjQOCcEjxlg\\\\n0X4lwm/Ritn3/XyOqvsUX1AT5uYYJR9KZ40C9dJTjWaLvaekozVIm8GRVCi14zxB\\\\nmjsCvb2aLzWMkTk7P0bkytbB1VWXaWNUd1uz/zc8rQKBgQD4Rq8JVQu1C+PeYQc2\\\\npAEUmqTUNPTEXUDW6g0xRV+kl6BE3grf+n09nfOAGndZl6CKH8P7tn8583AwVnZ6\\\\nGTwOm7gqXFNFt+66t2UtY6CY2IWucyhqPg7TMtTDFrwoqnrw8gytRLB5Blom6EuJ\\\\nKIAyNCRyDbJLhvB5IHks50qhYwKBgQDPjbSoZ/cJAyL1N0rL7o3fxVxnuhwTIguA\\\\nUZNi225/sYplYDUBlw/gFygJ79WyaVTZMgperACcTcGtR7PBBLL/8Rd9Yh0lJCYC\\\\nQ8RFI4RL14T90keK8zErWRkZye5lxOSCpaFeroVuMRhNuoyQEat7DTWBV0Q+KHwc\\\\nnMCfqoIZHQKBgQDIVLiN7iqpJnPyjxYz97fLeVDAzg4mmBxmjaqhdBnNhG9UwlnC\\\\nCqud2WKOnkxpZVirux/3bnVQPGbtCgdFVDFKlEnRHHgwzE58KNkh+76tNiD/93nH\\\\n6FUsA1r8I88lfRIAcz7ZXJCMxxxdQpkYji6K09oIkZapLLPC+Pntyp9EgwKBgQCd\\\\nPjt3NsS2hDTQ2KIHHGVJ+ekHAL3SVQGnpqXlyF7PyT8TjK671KmHWaPQ223n69sH\\\\nbdzjWqZfxJ0N3Xu2qQu/0fS83j88a0WMg7DHvJ+3IcG01sGy6IoA0FCu9Ahz+5Yv\\\\n0LIP3GJkWDeUc9eYMnrbD+fQZL/j46IbvzpD/NbxlQKBgQDxkEZVxOBhxBxGZiAR\\\\nhiMplkVivf7vWZONEN/Y8Xx/GI7eCBZ5S6YuGYxuCvsfeCWO5zDwSLhgo8Q+g/i/\\\\nEEXC/ZL1bA2oEy289zNIFCb1ydXE/yLRI2jaZLBLkmyb0a2uvIpzoSScLVvQ1mvs\\\\nRch3JkQaDyRkIk8VKrVE6RUXPw==\\\\n-----END PRIVATE KEY-----\\\\n\\\",\\\"client_email\\\":\\\"firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com\\\",\\\"client_id\\\":\\\"107889643554494218195\\\",\\\"auth_uri\\\":\\\"https://accounts.google.com/o/oauth2/auth\\\",\\\"token_uri\\\":\\\"https://oauth2.googleapis.com/token\\\",\\\"auth_provider_x509_cert_url\\\":\\\"https://www.googleapis.com/oauth2/v1/certs\\\",\\\"client_x509_cert_url\\\":\\\"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com\\\",\\\"universe_domain\\\":\\\"googleapis.com\\\"}\"}"
+    },
+    {
+      "key": "CommonConfig:Api:AdminToken",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AdminToken\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Api:SupportedModes",
+      "value": "[\"FootballNcaa\"]"
+    },
+    {
+      "key": "CommonConfig:AzureBlobStorageConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureBlobStorageConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:AzureBlobStorageUrl",
+      "value": "https://sportdeetssa.blob.core.windows.net"
+    },
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:AzureSignalR:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureSignalRConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/DeepSeekApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:BaseUrl",
+      "value": "https://api.deepseek.com/chat/completions"
+    },
+    {
+      "key": "CommonConfig:DeepSeekClientConfig:Model",
+      "value": "deepseek-chat"
+    },
+    {
+      "key": "CommonConfig:GoogleMaps:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/GoogleMapsApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Logging:MinimumLevel",
+      "value": "Warning"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:Microsoft",
+      "value": "Error"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:SportsData",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:Overrides:System",
+      "value": "Error"
+    },
+    {
+      "key": "CommonConfig:Logging:SeqMinimumLevel",
+      "value": "Information"
+    },
+    {
+      "key": "CommonConfig:Logging:SeqUri",
+      "value": "http://seq"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Host",
+      "value": "rabbitmq.messaging.svc.cluster.local"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
+      "value": "http://rabbitmq.messaging.svc.cluster.local:15672"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/RabbitMqPassword-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Username",
+      "value": "default_user_W-nWzltCrP2SJDoOmMR"
+    },
+    {
+      "key": "CommonConfig:Messaging:UseRabbitMq",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:FromEmail",
+      "value": "randy@sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:TemplateIdInvitation",
+      "value": "d-da1d1d2dd84b47fca20f905b8c9ddb00"
+    },
+    {
+      "key": "CommonConfig:NotificationConfig:Email:UrlBase",
+      "value": "sportdeets.com"
+    },
+    {
+      "key": "CommonConfig:OllamaClientConfig:BaseUrl",
+      "value": "http://ollama-service:11434"
+    },
+    {
+      "key": "CommonConfig:OllamaClientConfig:Model",
+      "value": "mistral"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:Enabled",
+      "value": "false"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:OtlpEndpoint",
+      "value": "http://loki.logging.svc.cluster.local:3100"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Logging:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:OtlpEndpoint",
+      "value": "http://prometheus-server.monitoring.svc.cluster.local:4317"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:PrometheusEndpoint",
+      "value": "/metrics"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Metrics:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:ServiceVersion",
+      "value": "1.0.0"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:Enabled",
+      "value": "true"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:OtlpEndpoint",
+      "value": "http://tempo.monitoring.svc.cluster.local:4317"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:SamplingRatio",
+      "value": "1.0"
+    },
+    {
+      "key": "CommonConfig:OpenTelemetry:Tracing:TimeoutMs",
+      "value": "10000"
+    },
+    {
+      "key": "CommonConfig:RedisUri",
+      "value": "cache-svc:6379"
+    },
+    {
+      "key": "CommonConfig:SeqUri",
+      "value": "http://seq"
+    },
+    {
+      "key": "CommonConfig:SqlBaseConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SqlBaseConnectionString-PROD\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:YouTubeClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/YouTubeApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Api:ApiConfig:BaseUrl",
+      "value": "https://sportdeets.com"
+    },
+    {
+      "key": "SportsData.Api:ApiConfig:UserIdSystem",
+      "value": "11111111-1111-1111-1111-111111111111"
+    },
+    {
+      "key": "SportsData.Api:BackgroundProcessor:MinWorkers",
+      "value": "30"
+    },
+    {
+      "key": "SportsData.Api:CanonicalDataProvider:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/CanonicalDataProviderConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Api:SyntheticUserPickStyles",
+      "value": "{\"moderate\": {\"name\": \"moderate\", \"description\": \"Balanced risk tolerance\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.6}, {\"maxSpread\": 14, \"minConfidence\": 0.7}, {\"maxSpread\": 21, \"minConfidence\": 0.8}, {\"maxSpread\": null, \"minConfidence\": 0.9}]}, \"conservative\": {\"name\": \"conservative\", \"description\": \"Risk-averse, higher confidence requirements\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.6}, {\"maxSpread\": 10, \"minConfidence\": 0.7}, {\"maxSpread\": 14, \"minConfidence\": 0.8}, {\"maxSpread\": 21, \"minConfidence\": 0.9}, {\"maxSpread\": null, \"minConfidence\": 0.95}]}, \"aggressive\": {\"name\": \"aggressive\", \"description\": \"Risk-tolerant, trusts model predictions more\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.55}, {\"maxSpread\": 14, \"minConfidence\": 0.6}, {\"maxSpread\": 21, \"minConfidence\": 0.7}, {\"maxSpread\": null, \"minConfidence\": 0.8}]}}"
+    },
+    {
+      "key": "SportsData.Producer:BackgroundProcessor:MinWorkers",
+      "value": "25"
+    },
+    {
+      "key": "SportsData.Producer:DocumentProcessing:EnableDependencyRequests",
+      "value": "true"
+    },
+    {
+      "key": "SportsData.Provider:BackgroundProcessor:MinWorkers",
+      "value": "25"
+    },
+    {
+      "key": "SportsData.Provider:DocumentPublishCooldownMinutes",
+      "value": "1440"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:ForceLiveFetch",
+      "value": "true"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:PersistLocally",
+      "value": "false"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:ReadFromCache",
+      "value": "false"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Provider",
+      "value": "Mongo"
+    }
+  ],
+  "Prod.All": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "http://provider-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    }
+  ],
+  "Prod.FootballNcaa": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:CurrentSeason",
+      "value": "2026"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "http://provider-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:RedisUri",
+      "value": "cache-svc:6379"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "SportsData.Provider:DocumentPublishCooldownMinutes",
+      "value": "90"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:CircuitBreakerCooldownSeconds",
+      "value": "600"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitMaxTokens",
+      "value": "2"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitMaxWaitMs",
+      "value": "30000"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitTokensPerSecond",
+      "value": "44"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing",
+      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/Provider-CosmosConnString-PROD-FootballNcaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "FootballNcaa"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/MongoDbPassword-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Provider",
+      "value": "Mongo"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
+      "value": "sd-football-ncaa"
+    },
+    {
+      "key": "SportsData.Provider:WorkerConfig:PauseMessageConsumption",
+      "value": "false"
+    }
+  ],
+  "Prod.FootballNfl": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:CurrentSeason",
+      "value": "2026"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "http://provider-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:RedisUri",
+      "value": "cache-svc:6379"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "SportsData.Provider:DocumentPublishCooldownMinutes",
+      "value": "90"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:CircuitBreakerCooldownSeconds",
+      "value": "600"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitMaxTokens",
+      "value": "2"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitMaxWaitMs",
+      "value": "30000"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitTokensPerSecond",
+      "value": "44"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing",
+      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/Provider-CosmosConnString-PROD-FootballNcaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "FootballNcaa"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/MongoDbPassword-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Provider",
+      "value": "Mongo"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
+      "value": "sd-football-ncaa"
+    },
+    {
+      "key": "SportsData.Provider:WorkerConfig:PauseMessageConsumption",
+      "value": "false"
+    }
+  ]
+}
