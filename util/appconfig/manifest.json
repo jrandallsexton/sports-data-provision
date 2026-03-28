@@ -1144,6 +1144,15 @@
       "value": "rabbitmq-nfl.messaging.svc.cluster.local"
     },
     {
+      "key": "CommonConfig:Messaging:RabbitMq:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/RabbitMqPassword-Prod-Nfl\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Username",
+      "value": "default_user_ylyqfWMadyoTP8d2sMn"
+    },
+    {
       "key": "CommonConfig:ProducerClientConfig:ApiUrl",
       "value": "http://producer-svc-football-nfl/api/"
     },
