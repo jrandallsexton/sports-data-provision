@@ -1,8 +1,12 @@
 #Requires -Version 7.0
 # Apply-AppConfig.ps1
 # Applies the manifest.json to Azure App Configuration.
-# Idempotent: az appconfig kv set overwrites existing values.
-# Key Vault references are applied via az appconfig kv set-keyvault.
+# Idempotent: imports overwrite existing values.
+#
+# Strategy:
+#   - Plain values: exported to temp JSON files and imported via az appconfig kv import
+#   - Key Vault references: applied individually via az appconfig kv set-keyvault
+#     (import doesn't preserve the keyvaultref content_type)
 #
 # Usage:
 #   .\Apply-AppConfig.ps1                          # Apply all labels
@@ -43,35 +47,82 @@ $mode = if ($DryRun) { "DRY RUN" } else { "APPLY" }
 Write-Host "[$mode] Targeting $($targetLabels.Count) label(s) in store: $StoreName" -ForegroundColor Cyan
 Write-Host ""
 
-$totalApplied = 0
-$totalSkipped = 0
+$totalPlain = 0
+$totalKvRefs = 0
 $totalErrors = 0
 
-foreach ($lbl in $targetLabels) {
-    $entries = $manifest[$lbl]
-    $count = $entries.Count
-    Write-Host "  Label: $lbl ($count entries)" -ForegroundColor White
+$tempDir = Join-Path ([System.IO.Path]::GetTempPath()) "appconfig-apply-$([guid]::NewGuid().ToString('N').Substring(0,8))"
+New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
 
-    foreach ($entry in $entries) {
-        $key = $entry["key"]
-        $value = $entry["value"]
-        $contentType = $entry["content_type"]
-        $isKvRef = $contentType -like "*keyvaultref*"
+try {
+    foreach ($lbl in $targetLabels) {
+        $entries = $manifest[$lbl]
+
+        # Separate plain values from KV references
+        $plainEntries = @{}
+        $kvRefEntries = @()
+
+        foreach ($entry in $entries) {
+            $ct = $entry["content_type"]
+            if ($ct -like "*keyvaultref*") {
+                $kvRefEntries += $entry
+            }
+            else {
+                $plainEntries[$entry["key"]] = $entry["value"]
+            }
+        }
+
+        $plainCount = $plainEntries.Count
+        $kvCount = $kvRefEntries.Count
+        Write-Host "  Label: $lbl ($plainCount plain, $kvCount KV refs)" -ForegroundColor White
 
         if ($DryRun) {
-            $displayVal = if ($isKvRef) { "(Key Vault reference)" } else { $value.Substring(0, [Math]::Min(60, $value.Length)) + $(if ($value.Length -gt 60) { "..." } else { "" }) }
-            Write-Host "    [DRY] $key = $displayVal" -ForegroundColor DarkGray
-            $totalSkipped++
+            foreach ($entry in $entries) {
+                $ct = $entry["content_type"]
+                $isKv = $ct -like "*keyvaultref*"
+                $val = $entry["value"]
+                $displayVal = if ($isKv) { "(Key Vault reference)" } else { $val.Substring(0, [Math]::Min(60, $val.Length)) + $(if ($val.Length -gt 60) { "..." } else { "" }) }
+                Write-Host "    [DRY] $($entry["key"]) = $displayVal" -ForegroundColor DarkGray
+            }
+            $totalPlain += $plainCount
+            $totalKvRefs += $kvCount
             continue
         }
 
-        try {
-            if ($isKvRef) {
-                # Key Vault reference: extract the secret URI and use set-keyvault
+        # Pass 1: Import plain values via temp JSON file
+        if ($plainCount -gt 0) {
+            $tempFile = Join-Path $tempDir "label-$($lbl -replace '[^a-zA-Z0-9_.-]', '_').json"
+            $plainEntries | ConvertTo-Json -Depth 5 | Set-Content -Path $tempFile -Encoding UTF8
+
+            $importResult = az appconfig kv import `
+                --name $StoreName `
+                --source file `
+                --path $tempFile `
+                --format json `
+                --label $lbl `
+                --yes `
+                --only-show-errors 2>&1
+
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "    [ERROR] Import failed for label $lbl : $importResult" -ForegroundColor Red
+                $totalErrors += $plainCount
+            }
+            else {
+                Write-Host "    Imported $plainCount plain values" -ForegroundColor DarkGray
+                $totalPlain += $plainCount
+            }
+        }
+
+        # Pass 2: Apply KV references individually
+        foreach ($kvEntry in $kvRefEntries) {
+            $key = $kvEntry["key"]
+            $value = $kvEntry["value"]
+
+            try {
                 $kvJson = $value | ConvertFrom-Json
                 $secretUri = $kvJson.uri
 
-                $null = az appconfig kv set-keyvault `
+                $setResult = az appconfig kv set-keyvault `
                     --name $StoreName `
                     --key $key `
                     --label $lbl `
@@ -80,50 +131,29 @@ foreach ($lbl in $targetLabels) {
                     --only-show-errors 2>&1
 
                 if ($LASTEXITCODE -ne 0) {
-                    Write-Host "    [ERROR] $key (KV ref)" -ForegroundColor Red
+                    Write-Host "    [ERROR] $key (KV ref): $setResult" -ForegroundColor Red
                     $totalErrors++
                 }
                 else {
-                    $totalApplied++
+                    $totalKvRefs++
                 }
             }
-            else {
-                # Plain value: use standard set
-                $setArgs = @(
-                    "appconfig", "kv", "set",
-                    "--name", $StoreName,
-                    "--key", $key,
-                    "--label", $lbl,
-                    "--value", $value,
-                    "--yes",
-                    "--only-show-errors"
-                )
-
-                if ($contentType) {
-                    $setArgs += "--content-type"
-                    $setArgs += $contentType
-                }
-
-                $null = az @setArgs 2>&1
-
-                if ($LASTEXITCODE -ne 0) {
-                    Write-Host "    [ERROR] $key" -ForegroundColor Red
-                    $totalErrors++
-                }
-                else {
-                    $totalApplied++
-                }
+            catch {
+                Write-Host "    [ERROR] $key (KV ref): $_" -ForegroundColor Red
+                $totalErrors++
             }
         }
-        catch {
-            Write-Host "    [ERROR] $key : $_" -ForegroundColor Red
-            $totalErrors++
-        }
+    }
+}
+finally {
+    # Cleanup temp files
+    if (Test-Path $tempDir) {
+        Remove-Item -Path $tempDir -Recurse -Force -ErrorAction SilentlyContinue
     }
 }
 
 Write-Host ""
 Write-Host "[$mode] Complete:" -ForegroundColor $(if ($totalErrors -gt 0) { "Yellow" } else { "Green" })
-Write-Host "  Applied: $totalApplied"
-Write-Host "  Skipped: $totalSkipped"
-Write-Host "  Errors:  $totalErrors"
+Write-Host "  Plain values: $totalPlain"
+Write-Host "  KV references: $totalKvRefs"
+Write-Host "  Errors: $totalErrors"
