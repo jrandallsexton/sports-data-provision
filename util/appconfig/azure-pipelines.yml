@@ -30,10 +30,6 @@ parameters:
     displayName: 'Label filter (e.g., "Prod.FootballNfl" or "*" for all)'
     type: string
     default: '*'
-  - name: dryRun
-    displayName: 'Dry run (preview only, no changes)'
-    type: boolean
-    default: true
   - name: storeName
     displayName: 'App Config store name'
     type: string
@@ -116,18 +112,12 @@ stages:
 - stage: Apply
   displayName: 'Apply to App Config'
   dependsOn: DryRun
-  condition: |
-    and(
-      succeeded(),
-      eq(${{ parameters.dryRun }}, false),
-      or(
-        eq(variables['Build.SourceBranch'], 'refs/heads/main'),
-        eq(variables['Build.Reason'], 'Manual')
-      )
-    )
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
   - deployment: Apply
     displayName: 'Apply manifest'
+    # Environment approval gate controls whether Apply proceeds after DryRun.
+    # Configure approvals in Azure DevOps: Environments > appconfig-sportdeetsappconfig2 > Approvals and checks.
     environment: 'appconfig-${{ parameters.storeName }}'
     strategy:
       runOnce:
