@@ -318,7 +318,7 @@
     },
     {
       "key": "CommonConfig:ContestClientConfig:ApiUrl",
-      "value": "https://contest-football-ncaa-dev.sportdeets.com/api/"
+      "value": "https://contest-football-nfl-dev.sportdeets.com/api/"
     },
     {
       "key": "CommonConfig:ContestClientConfig:SecretKey",
@@ -327,7 +327,7 @@
     },
     {
       "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
-      "value": "http://producer-svc-football-ncaa/api/"
+      "value": "http://producer-svc-football-nfl/api/"
     },
     {
       "key": "CommonConfig:FranchiseClientConfig:SecretKey",
@@ -345,7 +345,7 @@
     },
     {
       "key": "CommonConfig:PlayerClientConfig:ApiUrl",
-      "value": "https://player-football-ncaa-dev.sportdeets.com/api/"
+      "value": "https://player-football-nfl-dev.sportdeets.com/api/"
     },
     {
       "key": "CommonConfig:PlayerClientConfig:SecretKey",
@@ -354,7 +354,7 @@
     },
     {
       "key": "CommonConfig:ProducerClientConfig:ApiUrl",
-      "value": "https://producer-football-ncaa-dev.sportdeets.com/api/"
+      "value": "https://producer-football-nfl-dev.sportdeets.com/api/"
     },
     {
       "key": "CommonConfig:ProducerClientConfig:SecretKey",
@@ -363,7 +363,7 @@
     },
     {
       "key": "CommonConfig:ProviderClientConfig:ApiUrl",
-      "value": "https://provider-football-ncaa-dev.sportdeets.com/api/"
+      "value": "https://provider-football-nfl-dev.sportdeets.com/api/"
     },
     {
       "key": "CommonConfig:ProviderClientConfig:SecretKey",
@@ -372,7 +372,7 @@
     },
     {
       "key": "CommonConfig:SeasonClientConfig:ApiUrl",
-      "value": "https://season-football-ncaa-dev.sportdeets.com/api/"
+      "value": "https://season-football-nfl-dev.sportdeets.com/api/"
     },
     {
       "key": "CommonConfig:SeasonClientConfig:SecretKey",
@@ -381,7 +381,7 @@
     },
     {
       "key": "CommonConfig:VenueClientConfig:ApiUrl",
-      "value": "https://producer-football-ncaa-dev.sportdeets.com/api"
+      "value": "https://producer-football-nfl-dev.sportdeets.com/api"
     },
     {
       "key": "CommonConfig:VenueClientConfig:SecretKey",
@@ -762,11 +762,11 @@
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
-      "value": "FootballNcaa"
+      "value": "FootballNfl"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
-      "value": "sd-football-ncaa"
+      "value": "sd-football-nfl"
     }
   ],
   "Prod": [
@@ -1129,7 +1129,7 @@
     },
     {
       "key": "CommonConfig:ContestClientConfig:ApiUrl",
-      "value": "http://producer-svc-football-ncaa/api/"
+      "value": "http://producer-svc-football-nfl/api/"
     },
     {
       "key": "CommonConfig:CurrentSeason",
@@ -1137,15 +1137,15 @@
     },
     {
       "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
-      "value": "http://producer-svc-football-ncaa/api/"
+      "value": "http://producer-svc-football-nfl/api/"
     },
     {
       "key": "CommonConfig:ProducerClientConfig:ApiUrl",
-      "value": "http://producer-svc-football-ncaa/api/"
+      "value": "http://producer-svc-football-nfl/api/"
     },
     {
       "key": "CommonConfig:ProviderClientConfig:ApiUrl",
-      "value": "http://provider-svc-football-ncaa/api/"
+      "value": "http://provider-svc-football-nfl/api/"
     },
     {
       "key": "CommonConfig:RedisUri",
@@ -1153,7 +1153,7 @@
     },
     {
       "key": "CommonConfig:SeasonClientConfig:ApiUrl",
-      "value": "http://producer-svc-football-ncaa/api/"
+      "value": "http://producer-svc-football-nfl/api/"
     },
     {
       "key": "SportsData.Provider:DocumentPublishCooldownMinutes",
@@ -1177,7 +1177,7 @@
     },
     {
       "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+      "value": "{\"DefaultTierDelays\": {\"FootballNfl\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
@@ -1199,7 +1199,7 @@
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
-      "value": "sd-football-ncaa"
+      "value": "sd-football-nfl"
     },
     {
       "key": "SportsData.Provider:WorkerConfig:PauseMessageConsumption",
