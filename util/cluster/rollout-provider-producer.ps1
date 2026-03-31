@@ -1,31 +1,43 @@
 # Force a rolling restart of Provider and Producer deployments
-# Usage: .\rollout-provider-producer.ps1 [-Mode FootballNcaa] [-Context nuc]
+# Usage:
+#   .\rollout-provider-producer.ps1                           # All sports
+#   .\rollout-provider-producer.ps1 -Mode football-nfl        # NFL only
+#   .\rollout-provider-producer.ps1 -Mode football-ncaa       # NCAA only
 
 param(
-    [string]$Mode = "football-ncaa",
+    [string]$Mode = "",
     [string]$Context = "nuc",
     [string]$Namespace = "default"
 )
 
-$deployments = @(
-    "provider-$Mode",
-    "producer-$Mode"
-)
+# Discover deployments matching the mode filter
+$filter = if ($Mode) { "provider-$Mode|producer-$Mode" } else { "provider-football|producer-football" }
 
-Write-Host "Forcing rollout restart for Provider and Producer (mode: $Mode)..." -ForegroundColor Cyan
+$deployments = kubectl get deployments -n $Namespace --context=$Context -o name 2>&1 |
+    Where-Object { $_ -match $filter } |
+    ForEach-Object { $_ -replace "deployment.apps/", "" } |
+    Sort-Object
+
+if ($deployments.Count -eq 0) {
+    Write-Host "No deployments found matching filter: $filter" -ForegroundColor Yellow
+    exit 0
+}
+
+$modeDisplay = if ($Mode) { $Mode } else { "all sports" }
+Write-Host "Forcing rollout restart for $($deployments.Count) deployments ($modeDisplay)..." -ForegroundColor Cyan
 Write-Host ""
 
 $allSucceeded = $true
 
 foreach ($deployment in $deployments) {
-    Write-Host "Restarting $deployment..." -ForegroundColor Yellow
-    kubectl rollout restart deployment/$deployment -n $Namespace --context=$Context
+    Write-Host "  Restarting $deployment..." -ForegroundColor Yellow
+    kubectl rollout restart deployment/$deployment -n $Namespace --context=$Context 2>&1 | Out-Null
 
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "  Failed to restart $deployment" -ForegroundColor Red
+        Write-Host "    Failed" -ForegroundColor Red
         $allSucceeded = $false
     } else {
-        Write-Host "  Restart triggered for $deployment" -ForegroundColor Green
+        Write-Host "    Triggered" -ForegroundColor Green
     }
 }
 
