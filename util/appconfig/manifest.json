@@ -686,7 +686,8 @@
     },
     {
       "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}",
+      "content_type": "application/vnd.microsoft.appconfig.json;charset=utf-8"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
@@ -1092,7 +1093,8 @@
     },
     {
       "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNcaa\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/college-football\"}}"
+      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNcaa\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/college-football\"}}",
+      "content_type": "application/vnd.microsoft.appconfig.json;charset=utf-8"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
@@ -1190,7 +1192,8 @@
     },
     {
       "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNfl\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNfl\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/nfl\"}}"
+      "value": "{\"DefaultTierDelays\": {\"FootballNfl\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNfl\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/nfl\"}}",
+      "content_type": "application/vnd.microsoft.appconfig.json;charset=utf-8"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
