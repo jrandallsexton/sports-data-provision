@@ -1119,7 +1119,7 @@
       "value": "10"
     },
     {
-      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrls:FootballNcaa",
+      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrl",
       "value": "https://sports.core.api.espn.com/v2/sports/football/leagues/college-football"
     },
     {
@@ -1233,7 +1233,7 @@
       "value": "10"
     },
     {
-      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrls:FootballNfl",
+      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrl",
       "value": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
     },
     {
