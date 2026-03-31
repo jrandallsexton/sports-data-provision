@@ -685,9 +685,20 @@
       "value": "true"
     },
     {
-      "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}",
-      "content_type": "application/vnd.microsoft.appconfig.json;charset=utf-8"
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:AthleteSeason",
+      "value": "240"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:Season",
+      "value": "0"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:TeamSeason",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:Venue",
+      "value": "10"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
@@ -1092,9 +1103,24 @@
       "value": "44"
     },
     {
-      "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNcaa\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/college-football\"}}",
-      "content_type": "application/vnd.microsoft.appconfig.json;charset=utf-8"
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:AthleteSeason",
+      "value": "240"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:Season",
+      "value": "0"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:TeamSeason",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNcaa:Espn:Venue",
+      "value": "10"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrls:FootballNcaa",
+      "value": "https://sports.core.api.espn.com/v2/sports/football/leagues/college-football"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
@@ -1191,9 +1217,24 @@
       "value": "44"
     },
     {
-      "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNfl\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNfl\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/nfl\"}}",
-      "content_type": "application/vnd.microsoft.appconfig.json;charset=utf-8"
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNfl:Espn:AthleteSeason",
+      "value": "240"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNfl:Espn:Season",
+      "value": "0"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNfl:Espn:TeamSeason",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:FootballNfl:Espn:Venue",
+      "value": "10"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrls:FootballNfl",
+      "value": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
