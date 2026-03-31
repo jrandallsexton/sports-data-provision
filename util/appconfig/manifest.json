@@ -1092,7 +1092,7 @@
     },
     {
       "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+      "value": "{\"DefaultTierDelays\": {\"FootballNcaa\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNcaa\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/college-football\"}}"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
@@ -1190,7 +1190,7 @@
     },
     {
       "key": "SportsData.Provider:HistoricalSourcing",
-      "value": "{\"DefaultTierDelays\": {\"FootballNfl\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}}"
+      "value": "{\"DefaultTierDelays\": {\"FootballNfl\": {\"Espn\": {\"Season\": 0, \"Venue\": 10, \"TeamSeason\": 20, \"AthleteSeason\": 240}}}, \"EspnBaseUrls\": {\"FootballNfl\": \"https://sports.core.api.espn.com/v2/sports/football/leagues/nfl\"}}"
     },
     {
       "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
