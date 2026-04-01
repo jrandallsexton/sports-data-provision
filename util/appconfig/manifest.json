@@ -1172,6 +1172,10 @@
       "value": "rabbitmq-nfl.messaging.svc.cluster.local"
     },
     {
+      "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
+      "value": "http://rabbitmq-nfl.messaging.svc.cluster.local:15672"
+    },
+    {
       "key": "CommonConfig:Messaging:RabbitMq:Password",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/RabbitMqPassword-Prod-Nfl\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
