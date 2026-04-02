@@ -1352,6 +1352,58 @@
     {
       "key": "SportsData.Provider:WorkerConfig:PauseMessageConsumption",
       "value": "false"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-ncaa/api/"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     }
   ],
   "Prod.FootballNfl": [
@@ -1470,6 +1522,58 @@
     {
       "key": "SportsData.Provider:WorkerConfig:PauseMessageConsumption",
       "value": "false"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-nfl/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-nfl/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:ApiUrl",
+      "value": "http://producer-svc-football-nfl/api/"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     }
   ]
 }
