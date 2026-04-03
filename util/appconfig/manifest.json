@@ -1160,7 +1160,7 @@
     },
     {
       "key": "CommonConfig:RedisUri",
-      "value": "cache-svc:6379"
+      "value": "cache-svc:6379,abortConnect=false"
     },
     {
       "key": "CommonConfig:SeqUri",
@@ -1409,7 +1409,7 @@
     },
     {
       "key": "CommonConfig:RedisUri",
-      "value": "cache-svc:6379"
+      "value": "cache-svc:6379,abortConnect=false"
     },
     {
       "key": "CommonConfig:SeasonClientConfig:ApiUrl",
@@ -1579,7 +1579,7 @@
     },
     {
       "key": "CommonConfig:RedisUri",
-      "value": "cache-svc:6379"
+      "value": "cache-svc:6379,abortConnect=false"
     },
     {
       "key": "CommonConfig:SeasonClientConfig:ApiUrl",
