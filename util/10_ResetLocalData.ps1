@@ -8,7 +8,8 @@
 #>
 [CmdletBinding()]
 param(
-    [switch]$Force
+    [switch]$Force,
+    [string]$Sport = ""
 )
 
 if (-not $env:SPORTDEETS_SECRETS_PATH) {
@@ -37,7 +38,8 @@ $rabbitVhost = "%2F" # URL-encoded "/"
 # MongoDB fallback (hardcoded for now)
 $mongoConn = "mongodb://localhost:27017"
 $mongoDb = "Provider-Local"
-$mongoCollection = "FootballNcaa"
+$allMongoCollections = @("FootballNcaa", "FootballNfl")
+$mongoCollections = if ($Sport) { $allMongoCollections | Where-Object { $_ -eq $Sport } } else { $allMongoCollections }
 
 # Confirm prompt
 if (-not $Force) {
@@ -116,24 +118,109 @@ function Reset-PgDb($label, $dbName) {
 # Set PGPASSWORD for psql
 $env:PGPASSWORD = $pgPass
 
-# Run PG drops for each defined database
-foreach ($dbName in $pgDatabases) {
-    Reset-PgDb -label $dbName -dbName $dbName
+# Filter PG databases by sport if specified
+$targetDatabases = if ($Sport) {
+    $pgDatabases | Where-Object { $_ -like "*$Sport*" }
+} else {
+    $pgDatabases
 }
 
-# Drop Mongo collection if mongo CLI is installed
+# Run PG drops for each targeted database in parallel
+$resetJobs = @()
+foreach ($dbName in $targetDatabases) {
+    Write-Host "  Starting parallel reset for $dbName..." -ForegroundColor Gray
+    $job = Start-Job -ScriptBlock {
+        param($host_, $user_, $pass_, $dbName_)
+
+        $env:PGPASSWORD = $pass_
+
+        # Write SQL to temp files (no BOM)
+        function Write-TempSqlFile($sql) {
+            $tempPath = [System.IO.Path]::GetTempFileName()
+            $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+            $writer = New-Object System.IO.StreamWriter($tempPath, $false, $utf8NoBom)
+            $writer.Write($sql)
+            $writer.Close()
+            return $tempPath
+        }
+
+        $dropTablesSql = @'
+DO $$
+DECLARE
+    stmt TEXT;
+BEGIN
+    FOR stmt IN
+        SELECT 'DROP TABLE IF EXISTS "' || tablename || '" CASCADE;'
+        FROM pg_tables
+        WHERE schemaname = 'public'
+    LOOP
+        EXECUTE stmt;
+    END LOOP;
+END
+$$;
+'@
+        $dropHangfireSql = "DROP SCHEMA IF EXISTS hangfire CASCADE;"
+
+        $dropFile = Write-TempSqlFile $dropTablesSql
+        $hangfireFile = Write-TempSqlFile $dropHangfireSql
+
+        $output = @()
+        $output += "Resetting $dbName_..."
+
+        & psql -h $host_ -U $user_ -d $dbName_ -f $dropFile 2>&1 | ForEach-Object { $output += "  $_" }
+        $dropExit = $LASTEXITCODE
+
+        & psql -h $host_ -U $user_ -d $dbName_ -f $hangfireFile 2>&1 | ForEach-Object { $output += "  $_" }
+        $hangfireExit = $LASTEXITCODE
+
+        Remove-Item $dropFile, $hangfireFile -ErrorAction SilentlyContinue
+
+        return @{
+            DbName = $dbName_
+            DropExit = $dropExit
+            HangfireExit = $hangfireExit
+            Output = $output
+        }
+    } -ArgumentList $pgHost, $pgUser, $pgPass, $dbName
+
+    $resetJobs += $job
+}
+
+Write-Host "  Waiting for $($resetJobs.Count) parallel PG reset jobs..." -ForegroundColor Gray
+$resetJobs | Wait-Job | Out-Null
+
+foreach ($job in $resetJobs) {
+    $result = Receive-Job -Job $job
+    $info = $result | Where-Object { $_ -is [hashtable] } | Select-Object -Last 1
+    if ($info) {
+        $info.Output | ForEach-Object { Write-Host $_ }
+        if ($info.DropExit -ne 0) {
+            Write-Warning "psql drop failed for $($info.DbName) with exit code $($info.DropExit)"
+        }
+        if ($info.HangfireExit -ne 0) {
+            Write-Warning "psql hangfire drop failed for $($info.DbName) with exit code $($info.HangfireExit)"
+        }
+        if ($info.DropExit -eq 0 -and $info.HangfireExit -eq 0) {
+            Write-Host "  $($info.DbName) reset complete" -ForegroundColor Green
+        }
+    }
+    Remove-Job -Job $job
+}
+
+# Drop Mongo collections if mongo CLI is installed
 $mongoDbName = "Provider-Local"
-$mongoCollection = "FootballNcaa"
 
 if (Get-Command "mongosh" -ErrorAction SilentlyContinue) {
-    Write-Host "Deleting all documents from MongoDB collection '$mongoCollection' in database '$mongoDbName'..."
-    try {
-        mongosh --quiet --eval `
-            "db.getSiblingDB('$mongoDbName').getCollection('$mongoCollection').deleteMany({})"
-        Write-Host "All documents in '$mongoDbName.$mongoCollection' deleted successfully."
-    }
-    catch {
-        Write-Warning "mongosh execution failed: $_"
+    foreach ($mongoCollection in $mongoCollections) {
+        Write-Host "Deleting all documents from MongoDB collection '$mongoCollection' in database '$mongoDbName'..."
+        try {
+            mongosh --quiet --eval `
+                "db.getSiblingDB('$mongoDbName').getCollection('$mongoCollection').deleteMany({})"
+            Write-Host "All documents in '$mongoDbName.$mongoCollection' deleted successfully."
+        }
+        catch {
+            Write-Warning "mongosh execution failed for '$mongoCollection': $_"
+        }
     }
 } else {
     Write-Warning "'mongosh' CLI not found. Skipping MongoDB document purge."

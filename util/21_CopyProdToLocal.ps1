@@ -13,6 +13,11 @@
     3. Restore backups to local databases (18_RestoreLocalFromLocalDumps.ps1)
     4. Copy production MongoDB to local MongoDB (23_CopyMongoDbProdToLocal.ps1)
 
+.PARAMETER Sport
+    Optional sport filter (e.g., FootballNfl, FootballNcaa).
+    When specified, only backs up/restores databases for that sport.
+    When omitted, processes all sports.
+
 .PARAMETER Force
     Skip the confirmation prompt
 
@@ -20,11 +25,12 @@
     Skip the production backup step (Step 1). Useful for testing the reset/restore steps.
 
 .NOTES
-    This script will DESTROY all local data and replace it with production data.
+    This script will DESTROY local data for the targeted sport(s) and replace it with production data.
     Use with caution.
 #>
 [CmdletBinding()]
 param(
+    [string]$Sport = "",
     [switch]$Force,
     [switch]$NoBackup
 )
@@ -37,11 +43,13 @@ $ErrorActionPreference = "Stop"
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $startTime = Get-Date
 
+$sportDisplay = if ($Sport) { $Sport } else { "all sports" }
+
 Write-Host "=====================================" -ForegroundColor Cyan
-Write-Host "COPY PRODUCTION TO LOCAL E2E" -ForegroundColor Cyan
+Write-Host "COPY PRODUCTION TO LOCAL E2E ($sportDisplay)" -ForegroundColor Cyan
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "WARNING: This will DESTROY all local data!" -ForegroundColor Red
+Write-Host "WARNING: This will DESTROY local data for $sportDisplay!" -ForegroundColor Red
 Write-Host ""
 
 # Final confirmation
@@ -54,6 +62,10 @@ if (-not $Force) {
 }
 
 Write-Host ""
+
+# Build sport args for sub-scripts
+$sportParams = @{}
+if ($Sport) { $sportParams["Sport"] = $Sport }
 
 # =========================
 # Step 1: Backup Production to Local Disk
@@ -71,7 +83,7 @@ if ($NoBackup) {
         throw "ERROR: Backup script not found: $backupScript"
     }
 
-    & $backupScript
+    & $backupScript @sportParams
 
     if ($LASTEXITCODE -ne 0) {
         throw "ERROR: Production backup failed with exit code $LASTEXITCODE"
@@ -94,9 +106,8 @@ if (-not (Test-Path $resetScript)) {
     throw "ERROR: Reset script not found: $resetScript"
 }
 
-# Auto-confirm by using -Force switch
 Write-Host "  Automatically confirming local data reset..." -ForegroundColor Gray
-& $resetScript -Force
+& $resetScript -Force @sportParams
 
 if ($LASTEXITCODE -ne 0) {
     throw "ERROR: Local data reset failed with exit code $LASTEXITCODE"
@@ -107,57 +118,69 @@ Write-Host "Local data reset completed" -ForegroundColor Green
 Write-Host ""
 
 # =========================
-# Step 3: Restore from Local Dumps
+# Step 3+4: Restore PG and Copy MongoDB IN PARALLEL
 # =========================
-
-Write-Host "[STEP 3/4] Restoring production backups to local databases..." -ForegroundColor Cyan
-Write-Host ""
 
 $restoreScript = Join-Path $scriptDir "18_RestoreLocalFromLocalDumps.ps1"
 if (-not (Test-Path $restoreScript)) {
     throw "ERROR: Restore script not found: $restoreScript"
 }
 
-# Update the restore script to use FromProd backup folder
-$restoreContent = Get-Content $restoreScript -Raw
-$restoreContent = $restoreContent -replace 'C:\\Backups\\FromDev', 'C:\Backups\FromProd'
-$tempRestoreScript = Join-Path $env:TEMP "18_RestoreLocalFromLocalDumps_Prod.ps1"
-Set-Content -Path $tempRestoreScript -Value $restoreContent
-
-& $tempRestoreScript
-
-if ($LASTEXITCODE -ne 0) {
-    throw "ERROR: Restore failed with exit code $LASTEXITCODE"
-}
-
-# Clean up temp script
-Remove-Item $tempRestoreScript -Force
-
-Write-Host ""
-Write-Host "Restore completed" -ForegroundColor Green
-Write-Host ""
-
-# =========================
-# Step 4: Copy MongoDB Production to Local
-# =========================
-
-Write-Host "[STEP 4/4] Copying MongoDB production data to local..." -ForegroundColor Cyan
-Write-Host ""
-
 $mongoScript = Join-Path $scriptDir "23_CopyMongoDbProdToLocal.ps1"
 if (-not (Test-Path $mongoScript)) {
     throw "ERROR: MongoDB copy script not found: $mongoScript"
 }
 
-# Pass -Force flag to skip confir(PostgreSQL + MongoDB) mation prompt
-& $mongoScript -Force
+Write-Host "[STEP 3+4] Running PG restore and MongoDB copy in parallel..." -ForegroundColor Cyan
+Write-Host ""
 
-if ($LASTEXITCODE -ne 0) {
-    throw "ERROR: MongoDB copy failed with exit code $LASTEXITCODE"
+# Build argument strings for sub-scripts
+$sportArg = if ($Sport) { "-Sport `"$Sport`"" } else { "" }
+
+$pgRestoreJob = Start-Job -ScriptBlock {
+    param($script_, $sportArg_)
+    $expr = "& `"$script_`" $sportArg_"
+    $output = Invoke-Expression $expr 2>&1 | Out-String
+    return @{ ExitCode = $LASTEXITCODE; Output = $output; Step = "PG Restore" }
+} -ArgumentList $restoreScript, $sportArg
+
+$mongoJob = Start-Job -ScriptBlock {
+    param($script_, $sportArg_)
+    $expr = "& `"$script_`" -Force $sportArg_"
+    $output = Invoke-Expression $expr 2>&1 | Out-String
+    return @{ ExitCode = $LASTEXITCODE; Output = $output; Step = "MongoDB Copy" }
+} -ArgumentList $mongoScript, $sportArg
+
+Write-Host "  [PG Restore]  Job started (ID: $($pgRestoreJob.Id))" -ForegroundColor Gray
+Write-Host "  [MongoDB Copy] Job started (ID: $($mongoJob.Id))" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Waiting for both jobs to complete..." -ForegroundColor Yellow
+
+@($pgRestoreJob, $mongoJob) | Wait-Job | Out-Null
+
+$anyFailed = $false
+foreach ($job in @($pgRestoreJob, $mongoJob)) {
+    $result = Receive-Job -Job $job
+    $info = $result | Where-Object { $_ -is [hashtable] } | Select-Object -Last 1
+
+    if ($info) {
+        Write-Host ""
+        Write-Host "--- $($info.Step) Output ---" -ForegroundColor Cyan
+        Write-Host $info.Output
+        if ($info.ExitCode -ne 0) {
+            $anyFailed = $true
+            Write-Warning "$($info.Step) failed with exit code $($info.ExitCode)"
+        } else {
+            Write-Host "$($info.Step) completed successfully" -ForegroundColor Green
+        }
+    }
+    Remove-Job -Job $job
 }
 
-Write-Host ""
-Write-Host "MongoDB copy completed" -ForegroundColor Green
+if ($anyFailed) {
+    throw "ERROR: One or more parallel steps failed. See output above."
+}
+
 Write-Host ""
 
 # =========================
@@ -167,11 +190,10 @@ Write-Host ""
 $duration = (Get-Date) - $startTime
 
 Write-Host "=====================================" -ForegroundColor Cyan
-Write-Host "E2E COPY COMPLETE!" -ForegroundColor Cyan
+Write-Host "E2E COPY COMPLETE ($sportDisplay)" -ForegroundColor Cyan
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Total Duration: $($duration.ToString())" -ForegroundColor White
 Write-Host ""
 Write-Host "Your local databases now contain production data." -ForegroundColor Green
-Write-Host "You can start development with real data!" -ForegroundColor Green
 Write-Host ""

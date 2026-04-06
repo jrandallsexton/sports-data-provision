@@ -51,7 +51,9 @@
 [CmdletBinding()]
 param(
     [switch]$Force,
-    
+
+    [string]$Sport = "",
+
     [string[]]$Collections = @()
 )
 
@@ -100,16 +102,20 @@ if (-not $Force) {
 
 Write-Host ""
 
-# Database name - using FootballNcaa for both environments
-# Connection strings are admin connections, so database must be specified separately
-$SourceDatabase = "FootballNcaa"
-$DestDatabase = "FootballNcaa"
+# Database to copy — defaults to FootballNcaa, use -Sport to override
+$validSports = @("FootballNcaa", "FootballNfl")
+if ($Sport -and $Sport -notin $validSports) {
+    throw "ERROR: Unknown sport '$Sport'. Valid values: $($validSports -join ', ')"
+}
+
+$SourceDatabase = if ($Sport) { $Sport } else { "FootballNcaa" }
+$DestDatabase = $SourceDatabase
 
 # =========================
 # Step 1: Verify Connectivity
 # =========================
 
-Write-Host "[STEP 1/4] Verifying MongoDB connectivity..." -ForegroundColor Cyan
+Write-Host "[STEP 1/2] Verifying MongoDB connectivity..." -ForegroundColor Cyan
 Write-Host ""
 
 # Test source connectivity (production)
@@ -143,107 +149,58 @@ Write-Host "Connectivity verification completed" -ForegroundColor Green
 Write-Host ""
 
 # =========================
-# Step 2: Dump Production Database
+# Step 2/2: Pipe mongodump directly to mongorestore (no intermediate disk)
 # =========================
 
-Write-Host "[STEP 2/4] Dumping production MongoDB database..." -ForegroundColor Cyan
+Write-Host "[STEP 2/2] Piping production MongoDB directly to local (--archive)..." -ForegroundColor Cyan
 Write-Host ""
 
-$dumpDir = "C:\Backups\FromProd\MongoDB\$SourceDatabase"
-
-# Create dump directory
-if (Test-Path $dumpDir) {
-    Write-Host "  Removing existing dump directory..."
-    Remove-Item $dumpDir -Recurse -Force
+if ($Collections.Count -gt 0) {
+    Write-Host "  Copying specific collections: $($Collections -join ', ')" -ForegroundColor Gray
+} else {
+    Write-Host "  Copying all collections from $SourceDatabase" -ForegroundColor Gray
 }
 
-New-Item -ItemType Directory -Path $dumpDir -Force | Out-Null
-Write-Host "  Dump directory: $dumpDir" -ForegroundColor Gray
-
-# Build mongodump command with connection string
+# Build mongodump arguments for archive-to-stdout
 $dumpArgs = @(
     "--uri=`"$SourceConnectionString`""
     "--authenticationDatabase=admin"
     "--db=$SourceDatabase"
-    "--out=$dumpDir"
+    "--archive"
 )
 
-# Add specific collections if specified
 if ($Collections.Count -gt 0) {
-    Write-Host "  Copying specific collections: $($Collections -join ', ')" -ForegroundColor Gray
     foreach ($collection in $Collections) {
         $dumpArgs += "--collection=$collection"
     }
 }
-else {
-    Write-Host "  Copying all collections" -ForegroundColor Gray
-}
 
-Write-Host "  Executing mongodump..."
-& mongodump @dumpArgs
-
-if ($LASTEXITCODE -ne 0) {
-    throw "ERROR: mongodump failed with exit code $LASTEXITCODE"
-}
-
-Write-Host ""
-Write-Host "Production database dump completed" -ForegroundColor Green
-Write-Host ""
-
-# =========================
-# Step 3: Clear Destination Database (Optional)
-# =========================
-
-if ($Force) {
-    Write-Host "[STEP 3/4] Clearing destination database..." -ForegroundColor Cyan
-    Write-Host ""
-
-    Write-Host "  Dropping database '$DestDatabase' on localhost:27017..."
-    
-    $dropCmd = "db.getSiblingDB('$DestDatabase').dropDatabase()"
-    mongosh "$DestConnectionString" --quiet --eval $dropCmd
-    
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "  ✓ Destination database cleared" -ForegroundColor Green
-    }
-    else {
-        Write-Warning "  Failed to clear destination database (may not exist yet)"
-    }
-
-    Write-Host ""
-    Write-Host "Destination database cleared" -ForegroundColor Green
-    Write-Host ""
-}
-else {
-    Write-Host "[STEP 3/4] Skipping destination database clear (use -Force to enable)" -ForegroundColor Yellow
-    Write-Host ""
-}
-
-# =========================
-# Step 4: Restore to Local Database
-# =========================
-
-Write-Host "[STEP 4/4] Restoring to local MongoDB database..." -ForegroundColor Cyan
-Write-Host ""
-
-# Build mongorestore command with connection string
+# Build mongorestore arguments for archive-from-stdin
 $restoreArgs = @(
     "--uri=`"$DestConnectionString`""
     "--authenticationDatabase=admin"
-    "--db=$DestDatabase"
-    "--dir=$dumpDir\$SourceDatabase"
-    "--drop"  # Drop collections before restoring
+    "--nsFrom=`"$SourceDatabase.*`""
+    "--nsTo=`"$DestDatabase.*`""
+    "--archive"
+    "--drop"
 )
 
-Write-Host "  Executing mongorestore..."
-& mongorestore @restoreArgs
+Write-Host "  Executing: mongodump --archive | mongorestore --archive --drop" -ForegroundColor Gray
+Write-Host "  (This streams data directly without writing to disk)" -ForegroundColor Gray
+
+# Use cmd /c to create a proper pipe between the two processes
+$dumpCmd = "mongodump $($dumpArgs -join ' ')"
+$restoreCmd = "mongorestore $($restoreArgs -join ' ')"
+$pipeCmd = "$dumpCmd | $restoreCmd"
+
+& cmd /c $pipeCmd
 
 if ($LASTEXITCODE -ne 0) {
-    throw "ERROR: mongorestore failed with exit code $LASTEXITCODE"
+    throw "ERROR: mongodump | mongorestore pipeline failed with exit code $LASTEXITCODE"
 }
 
 Write-Host ""
-Write-Host "Restore to local database completed" -ForegroundColor Green
+Write-Host "Pipeline completed successfully" -ForegroundColor Green
 Write-Host ""
 
 # =========================
@@ -258,9 +215,9 @@ Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Total Duration: $($duration.ToString())" -ForegroundColor White
 Write-Host ""
-Write-Host "Source: $SourceHost`:$SourcePort / $SourceDatabase" -ForegroundColor White
-Write-Host "Destination: $DestHost`:$DestPort / $DestDatabase" -ForegroundColor White
-Write-Host "Dump Location: $dumpDir" -ForegroundColor White
+Write-Host "Source DB: $SourceDatabase (production)" -ForegroundColor White
+Write-Host "Dest DB:   $DestDatabase (local)" -ForegroundColor White
+Write-Host "Method:    Streamed via --archive pipe (no intermediate disk)" -ForegroundColor White
 Write-Host ""
 Write-Host "Your local MongoDB database now contains production data." -ForegroundColor Green
 Write-Host ""
