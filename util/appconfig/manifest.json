@@ -1379,6 +1379,78 @@
       "key": "CommonConfig:VenueClientConfig:FootballNfl:SecretKey",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://provider-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:BaseballMlb:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:BaseballMlb:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     }
   ],
   "Prod.FootballNcaa": [
@@ -1702,6 +1774,176 @@
       "key": "CommonConfig:VenueClientConfig:SecretKey",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    }
+  ],
+  "Prod.BaseballMlb": [
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ContestClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:CurrentSeason",
+      "value": "2026"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:FranchiseClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Host",
+      "value": "rabbitmq-mlb.messaging.svc.cluster.local"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
+      "value": "http://rabbitmq-mlb.messaging.svc.cluster.local:15672"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/RabbitMqPassword-Prod-Mlb\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Username",
+      "value": "default_user_r_34hvJSIqmk77zt2qU"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:PlayerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ProducerClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:ApiUrl",
+      "value": "http://provider-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ProviderClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:RedisUri",
+      "value": "cache-svc:6379,abortConnect=false"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:ApiUrl",
+      "value": "http://producer-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:VenueClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:DocumentPublishCooldownMinutes",
+      "value": "90"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:CircuitBreakerCooldownSeconds",
+      "value": "600"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitMaxTokens",
+      "value": "2"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitMaxWaitMs",
+      "value": "30000"
+    },
+    {
+      "key": "SportsData.Provider:EspnApiClientConfig:RateLimitTokensPerSecond",
+      "value": "44"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:BaseballMlb:Espn:AthleteSeason",
+      "value": "240"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:BaseballMlb:Espn:Season",
+      "value": "0"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:BaseballMlb:Espn:TeamSeason",
+      "value": "20"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:DefaultTierDelays:BaseballMlb:Espn:Venue",
+      "value": "10"
+    },
+    {
+      "key": "SportsData.Provider:HistoricalSourcing:EspnBaseUrl",
+      "value": "https://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/Provider-CosmosConnString-PROD-FootballNcaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "BaseballMlb"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/MongoDbPassword-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Provider",
+      "value": "Mongo"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
+      "value": "sd-baseball-mlb"
+    },
+    {
+      "key": "SportsData.Provider:WorkerConfig:PauseMessageConsumption",
+      "value": "false"
     }
   ]
 }
