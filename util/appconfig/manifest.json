@@ -112,10 +112,6 @@
       "value": "Information"
     },
     {
-      "key": "CommonConfig:Logging:SeqUri",
-      "value": "https://logging-dev.sportdeets.com"
-    },
-    {
       "key": "CommonConfig:NotificationConfig:Email:ApiKey",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/SendGridApiKey\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
@@ -556,10 +552,6 @@
       "value": "Information"
     },
     {
-      "key": "CommonConfig:Logging:SeqUri",
-      "value": "http://localhost:5341/"
-    },
-    {
       "key": "CommonConfig:Messaging:RabbitMq:Host",
       "value": "localhost"
     },
@@ -945,6 +937,79 @@
       "value": "sd-football-ncaa"
     }
   ],
+  "Local.BaseballMlb": [
+    {
+      "key": "CommonConfig:Firebase:Type",
+      "value": "service_account"
+    },
+    {
+      "key": "CommonConfig:Firebase:ProjectId",
+      "value": "sportdeets-dev"
+    },
+    {
+      "key": "CommonConfig:Firebase:PrivateKeyId",
+      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+    },
+    {
+      "key": "CommonConfig:Firebase:PrivateKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/FirebasePrivateKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Firebase:ClientEmail",
+      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+    },
+    {
+      "key": "CommonConfig:Firebase:ClientId",
+      "value": "107889643554494218195"
+    },
+    {
+      "key": "CommonConfig:Firebase:AuthUri",
+      "value": "https://accounts.google.com/o/oauth2/auth"
+    },
+    {
+      "key": "CommonConfig:Firebase:TokenUri",
+      "value": "https://oauth2.googleapis.com/token"
+    },
+    {
+      "key": "CommonConfig:Firebase:AuthProviderX509CertUrl",
+      "value": "https://www.googleapis.com/oauth2/v1/certs"
+    },
+    {
+      "key": "CommonConfig:Firebase:ClientX509CertUrl",
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+    },
+    {
+      "key": "CommonConfig:Firebase:UniverseDomain",
+      "value": "googleapis.com"
+    },
+    {
+      "key": "CommonConfig:AzureServiceBusConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/AzureServiceBusConnStr-Local\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:CurrentSeason",
+      "value": "2026"
+    },
+    {
+      "key": "CommonConfig:SeasonClientConfig:ApiUrl",
+      "value": "http://localhost:5231/api/"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:ConnectionString",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/Provider-CosmosConnString-LOCAL-FootballNcaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:DatabaseName",
+      "value": "BaseballMlb"
+    },
+    {
+      "key": "SportsData.Provider:ProviderDocDatabaseConfig:Username",
+      "value": "sd-baseball-mlb"
+    }
+  ],
   "Prod": [
     {
       "key": "CommonConfig:Firebase:Type",
@@ -1060,10 +1125,6 @@
     {
       "key": "CommonConfig:Logging:SeqMinimumLevel",
       "value": "Information"
-    },
-    {
-      "key": "CommonConfig:Logging:SeqUri",
-      "value": "http://seq"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Host",
