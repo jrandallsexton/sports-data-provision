@@ -103,7 +103,7 @@ if (-not $Force) {
 Write-Host ""
 
 # Database to copy — defaults to FootballNcaa, use -Sport to override
-$validSports = @("FootballNcaa", "FootballNfl")
+$validSports = @("FootballNcaa", "FootballNfl", "BaseballMlb")
 if ($Sport -and $Sport -notin $validSports) {
     throw "ERROR: Unknown sport '$Sport'. Valid values: $($validSports -join ', ')"
 }

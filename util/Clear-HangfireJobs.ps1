@@ -12,23 +12,30 @@
     Environment target: Local (default) or Prod
 .PARAMETER WhatIf
     Show what would be deleted without actually deleting
+.PARAMETER Force
+    Skip the per-database "type YES to confirm" prompt. Useful when running
+    repeatedly during local dev. Has no effect with -WhatIf (which never
+    deletes anything).
 .EXAMPLE
     .\Clear-HangfireJobs.ps1 -Database Provider -Target Local
     .\Clear-HangfireJobs.ps1 -Database Both -Sport FootballNcaa -Target Prod
     .\Clear-HangfireJobs.ps1 -WhatIf
+    .\Clear-HangfireJobs.ps1 -Database Both -Sport BaseballMlb -Target Local -Force
 #>
 
 param(
     [ValidateSet('Producer', 'Provider', 'Both')]
     [string]$Database = 'Both',
-    
-    [ValidateSet('FootballNcaa', 'FootballNfl', 'GolfPga')]
+
+    [ValidateSet('FootballNcaa', 'FootballNfl', 'BaseballMlb', 'GolfPga')]
     [string]$Sport = 'FootballNcaa',
-    
+
     [ValidateSet('Local', 'Prod')]
     [string]$Target = 'Local',
-    
-    [switch]$WhatIf
+
+    [switch]$WhatIf,
+
+    [switch]$Force
 )
 
 $ErrorActionPreference = 'Stop'
@@ -117,13 +124,18 @@ function Clear-HangfireDatabase {
         return
     }
     
-    # Confirm deletion
+    # Confirm deletion (skipped when -Force was passed)
     Write-ColorLog "`nWARNING: About to delete $($beforeCount.ToString('N0')) jobs from $DatabaseName" -Color Red
-    $confirm = Read-Host "Type 'YES' to confirm deletion"
-    
-    if ($confirm -ne 'YES') {
-        Write-ColorLog "Deletion cancelled." -Color Yellow
-        return
+    if ($Force) {
+        Write-ColorLog "  (-Force specified, skipping confirmation)" -Color Yellow
+    }
+    else {
+        $confirm = Read-Host "Type 'YES' to confirm deletion"
+
+        if ($confirm -ne 'YES') {
+            Write-ColorLog "Deletion cancelled." -Color Yellow
+            return
+        }
     }
     
     Write-ColorLog "`nDeleting jobs..." -Color Yellow

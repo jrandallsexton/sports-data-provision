@@ -4,13 +4,15 @@
 # - pg_restore drops/recreates objects in-place
 #
 # Usage:
-#   .\18_RestoreLocalFromLocalDumps.ps1                          # All databases
-#   .\18_RestoreLocalFromLocalDumps.ps1 -Sport FootballNfl       # NFL only
-#   .\18_RestoreLocalFromLocalDumps.ps1 -Sport FootballNcaa      # NCAA only
+#   .\18_RestoreLocalFromLocalDumps.ps1                              # All databases
+#   .\18_RestoreLocalFromLocalDumps.ps1 -Sport FootballNfl           # NFL only
+#   .\18_RestoreLocalFromLocalDumps.ps1 -Sport FootballNcaa          # NCAA only
+#   .\18_RestoreLocalFromLocalDumps.ps1 -Sport BaseballMlb -NoHangfire   # skip *.Hangfire dumps
 # =========================
 
 param(
-    [string]$Sport = ""
+    [string]$Sport = "",
+    [switch]$NoHangfire
 )
 
 # === Load secrets ===
@@ -74,6 +76,13 @@ if ($Sport) {
     }
 }
 
+# Skip *.Hangfire dumps when -NoHangfire is set. Belt-and-suspenders with
+# 20_BackupProdToLocalDisk's same flag — this still works if the dump folder
+# has older *.Hangfire.backup files from a prior full backup.
+if ($NoHangfire) {
+    $dumpFiles = $dumpFiles | Where-Object { $_.Name -notlike "*.Hangfire.backup" }
+}
+
 if (-not $dumpFiles) { throw "No .backup files found in $backupFolder matching filter" }
 
 Write-Host "`n[INFO] Restoring $($dumpFiles.Count) databases:"
@@ -100,7 +109,7 @@ foreach ($dump in $dumpFiles) {
       $dumpFile_ 2>&1
 
     return @{
-      ExitCode = $LASTEXITCODE
+      ExitCode = if ($null -eq $LASTEXITCODE) { 0 } else { $LASTEXITCODE }
       DbName = $dbName_
       Output = ($output | Out-String)
     }

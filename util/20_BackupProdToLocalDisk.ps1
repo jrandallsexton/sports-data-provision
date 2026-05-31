@@ -5,13 +5,15 @@
 # - Compatible with 18_RestoreLocalFromLocalDumps.ps1
 #
 # Usage:
-#   .\20_BackupProdToLocalDisk.ps1                          # All databases
-#   .\20_BackupProdToLocalDisk.ps1 -Sport FootballNfl       # NFL only
-#   .\20_BackupProdToLocalDisk.ps1 -Sport FootballNcaa      # NCAA only
+#   .\20_BackupProdToLocalDisk.ps1                            # All databases
+#   .\20_BackupProdToLocalDisk.ps1 -Sport FootballNfl         # NFL only
+#   .\20_BackupProdToLocalDisk.ps1 -Sport FootballNcaa        # NCAA only
+#   .\20_BackupProdToLocalDisk.ps1 -Sport BaseballMlb -NoHangfire   # skip *.Hangfire DBs
 # =========================
 
 param(
-    [string]$Sport = ""
+    [string]$Sport = "",
+    [switch]$NoHangfire
 )
 
 # === Load secrets ===
@@ -68,11 +70,16 @@ $env:PGPASSWORD = $pgPassword
 # Step 1: Get list of databases
 Write-Host "[Step 1] Querying databases on production server..." -ForegroundColor Yellow
 
-# Filter by sport if specified, otherwise get all sd* databases
+# Filter by sport if specified, otherwise get all sd* databases.
+# Hangfire DBs (*.Hangfire) are excluded when -NoHangfire is set so we don't
+# pull prod job state into local — Hangfire will recreate its schema on app
+# boot. The 10_ResetLocalData reset step still wipes them locally either way.
+$hangfireFilter = if ($NoHangfire) { " AND datname NOT LIKE '%.Hangfire'" } else { "" }
+
 $dbListQuery = if ($Sport) {
-    "SELECT datname FROM pg_database WHERE datname LIKE 'sd%' AND (datname LIKE '%.$Sport%' OR datname LIKE '%All%') ORDER BY datname"
+    "SELECT datname FROM pg_database WHERE datname LIKE 'sd%' AND (datname LIKE '%.$Sport%' OR datname LIKE '%All%')$hangfireFilter ORDER BY datname"
 } else {
-    "SELECT datname FROM pg_database WHERE datname LIKE 'sd%' ORDER BY datname"
+    "SELECT datname FROM pg_database WHERE datname LIKE 'sd%'$hangfireFilter ORDER BY datname"
 }
 
 $databases = & $psqlPath -h $pgHost -p $pgPort -U $pgUser -d postgres -t -A -c $dbListQuery

@@ -38,7 +38,7 @@ $rabbitVhost = "%2F" # URL-encoded "/"
 # MongoDB fallback (hardcoded for now)
 $mongoConn = "mongodb://localhost:27017"
 $mongoDb = "Provider-Local"
-$allMongoCollections = @("FootballNcaa", "FootballNfl")
+$allMongoCollections = @("FootballNcaa", "FootballNfl", "BaseballMlb")
 $mongoCollections = if ($Sport) { $allMongoCollections | Where-Object { $_ -eq $Sport } } else { $allMongoCollections }
 
 # Confirm prompt
