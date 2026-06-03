@@ -3,6 +3,7 @@
 #   .\rollout-provider-producer.ps1                           # All sports
 #   .\rollout-provider-producer.ps1 -Mode football-nfl        # NFL only
 #   .\rollout-provider-producer.ps1 -Mode football-ncaa       # NCAA only
+#   .\rollout-provider-producer.ps1 -Mode baseball-mlb        # MLB only
 
 param(
     [string]$Mode = "",
@@ -11,7 +12,7 @@ param(
 )
 
 # Discover deployments matching the mode filter
-$filter = if ($Mode) { "provider-$Mode|producer-$Mode" } else { "provider-football|producer-football" }
+$filter = if ($Mode) { "provider-$Mode|producer-$Mode" } else { "provider-football|producer-football|provider-baseball|producer-baseball" }
 
 $deployments = kubectl get deployments -n $Namespace --context=$Context -o name 2>&1 |
     Where-Object { $_ -match $filter } |

@@ -6,11 +6,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ProjectId",
-      "value": "sportdeets-dev"
+      "value": "sportdeets"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKeyId",
-      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+      "value": "539838400280252cf0bc9977674e9d1b2d84e94d"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKey",
@@ -19,11 +19,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientEmail",
-      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+      "value": "firebase-adminsdk-fbsvc@sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:ClientId",
-      "value": "107889643554494218195"
+      "value": "113143370804500933323"
     },
     {
       "key": "CommonConfig:Firebase:AuthUri",
@@ -39,7 +39,7 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientX509CertUrl",
-      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:UniverseDomain",
@@ -433,11 +433,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ProjectId",
-      "value": "sportdeets-dev"
+      "value": "sportdeets"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKeyId",
-      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+      "value": "539838400280252cf0bc9977674e9d1b2d84e94d"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKey",
@@ -446,11 +446,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientEmail",
-      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+      "value": "firebase-adminsdk-fbsvc@sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:ClientId",
-      "value": "107889643554494218195"
+      "value": "113143370804500933323"
     },
     {
       "key": "CommonConfig:Firebase:AuthUri",
@@ -466,7 +466,7 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientX509CertUrl",
-      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:UniverseDomain",
@@ -798,11 +798,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ProjectId",
-      "value": "sportdeets-dev"
+      "value": "sportdeets"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKeyId",
-      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+      "value": "539838400280252cf0bc9977674e9d1b2d84e94d"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKey",
@@ -811,11 +811,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientEmail",
-      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+      "value": "firebase-adminsdk-fbsvc@sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:ClientId",
-      "value": "107889643554494218195"
+      "value": "113143370804500933323"
     },
     {
       "key": "CommonConfig:Firebase:AuthUri",
@@ -831,7 +831,7 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientX509CertUrl",
-      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:UniverseDomain",
@@ -871,11 +871,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ProjectId",
-      "value": "sportdeets-dev"
+      "value": "sportdeets"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKeyId",
-      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+      "value": "539838400280252cf0bc9977674e9d1b2d84e94d"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKey",
@@ -884,11 +884,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientEmail",
-      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+      "value": "firebase-adminsdk-fbsvc@sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:ClientId",
-      "value": "107889643554494218195"
+      "value": "113143370804500933323"
     },
     {
       "key": "CommonConfig:Firebase:AuthUri",
@@ -904,7 +904,7 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientX509CertUrl",
-      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:UniverseDomain",
@@ -944,11 +944,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ProjectId",
-      "value": "sportdeets-dev"
+      "value": "sportdeets"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKeyId",
-      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+      "value": "539838400280252cf0bc9977674e9d1b2d84e94d"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKey",
@@ -957,11 +957,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientEmail",
-      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+      "value": "firebase-adminsdk-fbsvc@sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:ClientId",
-      "value": "107889643554494218195"
+      "value": "113143370804500933323"
     },
     {
       "key": "CommonConfig:Firebase:AuthUri",
@@ -977,7 +977,7 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientX509CertUrl",
-      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:UniverseDomain",
@@ -1017,11 +1017,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ProjectId",
-      "value": "sportdeets-dev"
+      "value": "sportdeets"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKeyId",
-      "value": "f3ec3c950b1b65c572f0b2f552beb174e0749b40"
+      "value": "539838400280252cf0bc9977674e9d1b2d84e94d"
     },
     {
       "key": "CommonConfig:Firebase:PrivateKey",
@@ -1030,11 +1030,11 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientEmail",
-      "value": "firebase-adminsdk-fbsvc@sportdeets-dev.iam.gserviceaccount.com"
+      "value": "firebase-adminsdk-fbsvc@sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:ClientId",
-      "value": "107889643554494218195"
+      "value": "113143370804500933323"
     },
     {
       "key": "CommonConfig:Firebase:AuthUri",
@@ -1050,7 +1050,7 @@
     },
     {
       "key": "CommonConfig:Firebase:ClientX509CertUrl",
-      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets-dev.iam.gserviceaccount.com"
+      "value": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sportdeets.iam.gserviceaccount.com"
     },
     {
       "key": "CommonConfig:Firebase:UniverseDomain",
@@ -1128,11 +1128,11 @@
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Host",
-      "value": "rabbitmq.messaging.svc.cluster.local"
+      "value": "rabbitmq-api.messaging.svc.cluster.local"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
-      "value": "http://rabbitmq.messaging.svc.cluster.local:15672"
+      "value": "http://rabbitmq-api.messaging.svc.cluster.local:15672"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Password",
@@ -1141,7 +1141,7 @@
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Username",
-      "value": "default_user_W-nWzltCrP2SJDoOmMR"
+      "value": "default_user_4g5dWXbZNp08FqK3B79"
     },
     {
       "key": "CommonConfig:Messaging:UseRabbitMq",
@@ -1533,6 +1533,23 @@
       "value": "http://producer-svc-football-ncaa/api/"
     },
     {
+      "key": "CommonConfig:Messaging:RabbitMq:Host",
+      "value": "rabbitmq-football-ncaa.messaging.svc.cluster.local"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
+      "value": "http://rabbitmq-football-ncaa.messaging.svc.cluster.local:15672"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Password",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/RabbitMqPassword-Prod-Ncaa\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:Messaging:RabbitMq:Username",
+      "value": "default_user_yxPuDAuxTW1SmQx9izy"
+    },
+    {
       "key": "CommonConfig:ProducerClientConfig:ApiUrl",
       "value": "http://producer-svc-football-ncaa/api/"
     },
@@ -1687,11 +1704,11 @@
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Host",
-      "value": "rabbitmq-nfl.messaging.svc.cluster.local"
+      "value": "rabbitmq-football-nfl.messaging.svc.cluster.local"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
-      "value": "http://rabbitmq-nfl.messaging.svc.cluster.local:15672"
+      "value": "http://rabbitmq-football-nfl.messaging.svc.cluster.local:15672"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Password",
@@ -1700,7 +1717,7 @@
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Username",
-      "value": "default_user_ylyqfWMadyoTP8d2sMn"
+      "value": "default_user_g8INOMXiSUpwyzOg7-B"
     },
     {
       "key": "CommonConfig:ProducerClientConfig:ApiUrl",
@@ -1867,11 +1884,11 @@
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Host",
-      "value": "rabbitmq-mlb.messaging.svc.cluster.local"
+      "value": "rabbitmq-baseball-mlb.messaging.svc.cluster.local"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:ManagementApiBaseUrl",
-      "value": "http://rabbitmq-mlb.messaging.svc.cluster.local:15672"
+      "value": "http://rabbitmq-baseball-mlb.messaging.svc.cluster.local:15672"
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Password",
@@ -1880,7 +1897,7 @@
     },
     {
       "key": "CommonConfig:Messaging:RabbitMq:Username",
-      "value": "default_user_r_34hvJSIqmk77zt2qU"
+      "value": "default_user_rDAgfniz1Sjp8ghdsFx"
     },
     {
       "key": "CommonConfig:NotificationClientConfig:ApiUrl",
