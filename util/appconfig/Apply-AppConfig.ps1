@@ -90,7 +90,11 @@ try {
             foreach ($entry in $entries) {
                 $ct = $entry["content_type"]
                 $isKv = $ct -like "*keyvaultref*"
-                $val = $entry["value"]
+                # Stringify for display: ConvertFrom-Json coerces ISO-8601 values
+                # (e.g. LeagueCreationOpensUtc) to [datetime], which has no
+                # .Substring/.Length. Display only — the apply path (below) keeps
+                # the original object so its instant round-trips unchanged.
+                $val = "$($entry["value"])"
                 $displayVal = if ($isKv) { "(Key Vault reference)" } else { $val.Substring(0, [Math]::Min(60, $val.Length)) + $(if ($val.Length -gt 60) { "..." } else { "" }) }
                 Write-Host "    [DRY] $($entry["key"]) = $displayVal" -ForegroundColor DarkGray
             }
