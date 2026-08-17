@@ -580,7 +580,7 @@
     },
     {
       "key": "CommonConfig:NotificationClientConfig:ApiUrl",
-      "value": "http://localhost:5068/api/"
+      "value": "http://localhost:5068/"
     },
     {
       "key": "CommonConfig:NotificationClientConfig:SecretKey",
@@ -1365,24 +1365,6 @@
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     },
     {
-      "key": "CommonConfig:NotificationClientConfig:FootballNcaa:ApiUrl",
-      "value": "http://producer-svc-football-ncaa/api/"
-    },
-    {
-      "key": "CommonConfig:NotificationClientConfig:FootballNcaa:SecretKey",
-      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
-      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
-    },
-    {
-      "key": "CommonConfig:NotificationClientConfig:FootballNfl:ApiUrl",
-      "value": "http://producer-svc-football-nfl/api/"
-    },
-    {
-      "key": "CommonConfig:NotificationClientConfig:FootballNfl:SecretKey",
-      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
-      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
-    },
-    {
       "key": "CommonConfig:PlayerClientConfig:FootballNcaa:ApiUrl",
       "value": "http://producer-svc-football-ncaa/api/"
     },
@@ -1491,15 +1473,6 @@
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     },
     {
-      "key": "CommonConfig:NotificationClientConfig:BaseballMlb:ApiUrl",
-      "value": "http://producer-svc-baseball-mlb/api/"
-    },
-    {
-      "key": "CommonConfig:NotificationClientConfig:BaseballMlb:SecretKey",
-      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
-      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
-    },
-    {
       "key": "CommonConfig:PlayerClientConfig:BaseballMlb:ApiUrl",
       "value": "http://producer-svc-baseball-mlb/api/"
     },
@@ -1542,6 +1515,15 @@
     {
       "key": "CommonConfig:VenueClientConfig:BaseballMlb:SecretKey",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ServiceApiKey-Prod\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:ApiUrl",
+      "value": "http://notification-svc/"
+    },
+    {
+      "key": "CommonConfig:NotificationClientConfig:SecretKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationAdminApiKey-Prod\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     }
   ],
