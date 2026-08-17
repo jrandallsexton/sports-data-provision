@@ -303,7 +303,7 @@
     },
     {
       "key": "CommonConfig:NotificationClientConfig:SecretKey",
-      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationService-ApiKey-DEV\"}",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationAdminApiKey-Dev\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     },
     {
@@ -382,7 +382,7 @@
     },
     {
       "key": "CommonConfig:NotificationClientConfig:SecretKey",
-      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationService-ApiKey-DEV\"}",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationAdminApiKey-Dev\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     },
     {
@@ -584,7 +584,7 @@
     },
     {
       "key": "CommonConfig:NotificationClientConfig:SecretKey",
-      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationService-ApiKey-LOCAL\"}",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/NotificationAdminApiKey-Local\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
     },
     {
