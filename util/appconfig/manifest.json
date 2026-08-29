@@ -683,6 +683,10 @@
       "value": "http://localhost:5205/api/"
     },
     {
+      "key": "CommonConfig:ApiClientConfig:ApiUrl",
+      "value": "http://localhost:5262/"
+    },
+    {
       "key": "CommonConfig:ProviderClientConfig:SecretKey",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/ProviderService-ApiKey-LOCAL\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
@@ -1576,6 +1580,10 @@
       "value": "http://provider-svc-football-ncaa/api/"
     },
     {
+      "key": "CommonConfig:ApiClientConfig:ApiUrl",
+      "value": "http://api-service:8080/"
+    },
+    {
       "key": "CommonConfig:RedisUri",
       "value": "cache-svc:6379,abortConnect=false"
     },
@@ -1744,6 +1752,10 @@
     {
       "key": "CommonConfig:ProviderClientConfig:ApiUrl",
       "value": "http://provider-svc-football-nfl/api/"
+    },
+    {
+      "key": "CommonConfig:ApiClientConfig:ApiUrl",
+      "value": "http://api-service:8080/"
     },
     {
       "key": "CommonConfig:RedisUri",
@@ -1947,6 +1959,10 @@
     {
       "key": "CommonConfig:ProviderClientConfig:ApiUrl",
       "value": "http://provider-svc-baseball-mlb/api/"
+    },
+    {
+      "key": "CommonConfig:ApiClientConfig:ApiUrl",
+      "value": "http://api-service:8080/"
     },
     {
       "key": "CommonConfig:ProviderClientConfig:SecretKey",
