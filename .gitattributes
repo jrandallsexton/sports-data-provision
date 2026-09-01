@@ -1,0 +1,2 @@
+# Shell scripts are deployed to Linux boxes via scp — CRLF breaks bash.
+*.sh text eol=lf
