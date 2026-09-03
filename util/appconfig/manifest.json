@@ -92,6 +92,15 @@
       "value": "deepseek-chat"
     },
     {
+      "key": "CommonConfig:OpenRouterClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/OpenRouterApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:OpenRouterClientConfig:BaseUrl",
+      "value": "https://openrouter.ai/api/v1/chat/completions"
+    },
+    {
       "key": "CommonConfig:GoogleMaps:ApiKey",
       "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/GoogleMapsApiKey\"}",
       "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
@@ -526,6 +535,15 @@
     {
       "key": "CommonConfig:DeepSeekClientConfig:Model",
       "value": "deepseek-chat"
+    },
+    {
+      "key": "CommonConfig:OpenRouterClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/OpenRouterApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:OpenRouterClientConfig:BaseUrl",
+      "value": "https://openrouter.ai/api/v1/chat/completions"
     },
     {
       "key": "CommonConfig:FranchiseClientConfig:ApiUrl",
@@ -1132,6 +1150,15 @@
     {
       "key": "CommonConfig:DeepSeekClientConfig:Model",
       "value": "deepseek-chat"
+    },
+    {
+      "key": "CommonConfig:OpenRouterClientConfig:ApiKey",
+      "value": "{\"uri\": \"https://sportsdatakv.vault.azure.net/secrets/OpenRouterApiKey\"}",
+      "content_type": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+    },
+    {
+      "key": "CommonConfig:OpenRouterClientConfig:BaseUrl",
+      "value": "https://openrouter.ai/api/v1/chat/completions"
     },
     {
       "key": "CommonConfig:GoogleMaps:ApiKey",
