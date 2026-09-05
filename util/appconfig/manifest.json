@@ -776,6 +776,14 @@
       "value": "{\"moderate\": {\"name\": \"moderate\", \"description\": \"Balanced risk tolerance\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.6}, {\"maxSpread\": 14, \"minConfidence\": 0.7}, {\"maxSpread\": 21, \"minConfidence\": 0.8}, {\"maxSpread\": null, \"minConfidence\": 0.9}]}, \"conservative\": {\"name\": \"conservative\", \"description\": \"Risk-averse, higher confidence requirements\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.6}, {\"maxSpread\": 10, \"minConfidence\": 0.7}, {\"maxSpread\": 14, \"minConfidence\": 0.8}, {\"maxSpread\": 21, \"minConfidence\": 0.9}, {\"maxSpread\": null, \"minConfidence\": 0.95}]}, \"aggressive\": {\"name\": \"aggressive\", \"description\": \"Risk-tolerant, trusts model predictions more\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.55}, {\"maxSpread\": 14, \"minConfidence\": 0.6}, {\"maxSpread\": 21, \"minConfidence\": 0.7}, {\"maxSpread\": null, \"minConfidence\": 0.8}]}}"
     },
     {
+      "key": "SportsData.Notification:NotificationConfig:PickDeadlineCoalesceMinutes",
+      "value": "30"
+    },
+    {
+      "key": "SportsData.Notification:NotificationConfig:PickDeadlineLeadMinutes",
+      "value": "60"
+    },
+    {
       "key": "SportsData.Producer:BackgroundProcessor:MinWorkers",
       "value": "50"
     },
@@ -1324,6 +1332,14 @@
     {
       "key": "SportsData.Api:SyntheticUserPickStyles",
       "value": "{\"moderate\": {\"name\": \"moderate\", \"description\": \"Balanced risk tolerance\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.6}, {\"maxSpread\": 14, \"minConfidence\": 0.7}, {\"maxSpread\": 21, \"minConfidence\": 0.8}, {\"maxSpread\": null, \"minConfidence\": 0.9}]}, \"conservative\": {\"name\": \"conservative\", \"description\": \"Risk-averse, higher confidence requirements\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.6}, {\"maxSpread\": 10, \"minConfidence\": 0.7}, {\"maxSpread\": 14, \"minConfidence\": 0.8}, {\"maxSpread\": 21, \"minConfidence\": 0.9}, {\"maxSpread\": null, \"minConfidence\": 0.95}]}, \"aggressive\": {\"name\": \"aggressive\", \"description\": \"Risk-tolerant, trusts model predictions more\", \"thresholds\": [{\"maxSpread\": 7, \"minConfidence\": 0.5}, {\"maxSpread\": 10, \"minConfidence\": 0.55}, {\"maxSpread\": 14, \"minConfidence\": 0.6}, {\"maxSpread\": 21, \"minConfidence\": 0.7}, {\"maxSpread\": null, \"minConfidence\": 0.8}]}}"
+    },
+    {
+      "key": "SportsData.Notification:NotificationConfig:PickDeadlineCoalesceMinutes",
+      "value": "30"
+    },
+    {
+      "key": "SportsData.Notification:NotificationConfig:PickDeadlineLeadMinutes",
+      "value": "60"
     },
     {
       "key": "SportsData.Producer:BackgroundProcessor:MinWorkers",
