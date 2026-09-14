@@ -698,7 +698,7 @@
     },
     {
       "key": "CommonConfig:ProviderClientConfig:ApiUrl",
-      "value": "http://localhost:5205/api/"
+      "value": "http://localhost:7050/api/"
     },
     {
       "key": "CommonConfig:ApiClientConfig:ApiUrl",
@@ -1340,6 +1340,10 @@
     {
       "key": "SportsData.Notification:NotificationConfig:PickDeadlineLeadMinutes",
       "value": "60"
+    },
+    {
+      "key": "SportsData.Notification:NotificationConfig:PushEnabled",
+      "value": "true"
     },
     {
       "key": "SportsData.Producer:BackgroundProcessor:MinWorkers",
