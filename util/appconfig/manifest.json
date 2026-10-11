@@ -1358,6 +1358,10 @@
       "value": "true"
     },
     {
+      "key": "SportsData.Producer:InstantAnalysis:Enabled",
+      "value": "true"
+    },
+    {
       "key": "SportsData.Provider:BackgroundProcessor:MinWorkers",
       "value": "25"
     },
